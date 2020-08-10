@@ -42,17 +42,27 @@ O objetivo deste trabalho é promover o desenvolvimento de um pequeno sistema ba
         2. Relatórios
             a. Saldo. O sistema deverá imprimir o saldo na tela do terminal.
             b. Relatório de tributação da conta corrente.
+                
                 1. O relatório de tributação deverá apresentar o total gasto nas operações até o momento do relatório.
+                
                 2. Adicionalmente deverão ser informados os valores que o banco cobra por cada operação bancária.
+                
                 3. Para cada saque será cobrado o valor de R$0.10 (dez centavos).
+                
                 4. Para cada depósito será cobrado o valor de R$0.10 (dez centavos).
+                
                 5. Para cada transferência será cobrado o valor de R$0.20 (dez centavos) que deverá ser cobrado apenas do remetente.
+            
             c. Relatório de Rendimento da poupança.
+               
                 1. Retorna uma simulação do valor de rendimento da poupança no prazo informado. Neste caso o cliente deverá informar o valor em dinheiro e a quantidade de dias que pretende simular. O sistema deverá informar o rendimento desse dinheiro para o prazo informado.
            
             d. Desafio:
+               
                 1. Criar uma classe seguro de vida que possa ser contratado pelo cliente onde o mesmo informa o valor que será segurado. No ato da contratação será debitado 20% do valor contratado como tributo do seguro.
+               
                 2. Incluir no relatório de tributação o valor referente ao seguro de vida, caso este cliente possua estas informações.
+    
     - Caso 2:
         Caso o usuário seja um Funcionário no cargo de Gerente o sistema fornecerá um menu com opções de:
         1. Movimentações e Informações da Conta.
@@ -62,18 +72,27 @@ O objetivo deste trabalho é promover o desenvolvimento de um pequeno sistema ba
         2. Relatórios
             a. Saldo. O sistema deverá imprimir o saldo na tela do terminal.
             b. Relatório de tributação da conta corrente.
+                
                 1. O relatório de tributação deverá apresentar o total gasto nas operações até o momento do relatório.
+                
                 2. Adicionalmente deverão ser informados os valores que o banco cobra por cada operação bancária.
+                
                 3. Para cada saque será cobrado o valor de R$0.10 (dez centavos).
+                
                 4. Para cada depósito será cobrado o valor de R$0.10 (dez centavos).
+                
                 5. Para cada transferência será cobrado o valor de R$0.20 (dez centavos) que deverá ser cobrado apenas do remetente.
+            
             c. Relatório de Rendimento da poupança.
+               
                 1. Retorna uma simulação do valor de rendimento da poupança no prazo informado. Neste caso o cliente deverá informar o valor em dinheiro e a quantidade de dias que pretende simular. O sistema deverá informar orendimento desse dinheiro para o prazo informado.
+            
             d. Relatório do número contas na mesma agência em que este gerente trabalha.
     - Caso 3:
         Caso o usuário seja um Funcionário no cargo de Diretor o sistema fornecerá um menu com todas as opções anteriores, adicionando:
         1. Relatórios.
             a. Relatório com as informações de Nome, CPF e Agência de todos os clientes do sistema em ordem alfabética.
+    
     - Caso 4:
         Por fim, caso o usuário acessando o sistema seja um Funcionário no cargo de Presidente o sistema fornecerá um menu com todas as opções anteriores, adicionando:
         1. Relatórios.
