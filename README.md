@@ -13,22 +13,22 @@ O objetivo deste trabalho é promover o desenvolvimento de um pequeno sistema ba
 * Requisitos Mínimos:
     - Classes
     O sistema deverá ter as seguintes classes obrigatoriamente. (Podendo ter classes adicionais perante a necessidade descoberta por cada grupo):
-    ● Cliente
-    ● Conta
-    ● Conta Corrente
-    ● Conta Poupança
-    ● Funcionário
-        ○ Gerente
-        ○ Diretor
-        ○ Presidente
-    ● SistemaInterno (Classe main)
+        * Cliente
+        * Conta
+        * Conta Corrente
+        * Conta Poupança
+        * Funcionário
+            * Gerente
+            * Diretor
+            * Presidente
+        * SistemaInterno (Classe main)
 
     - Atributos
-        ● Cliente deve ter os atributos de senha e CPF para que possam logar no sistema interno.
-        ● Conta, que deverá ser uma classe abstrata, deve conter os atributos de CPF do titular, para relacionar a conta com o usuário logado no sistema, e o saldo. Adicionalmente, a conta deve ter um atributo identificador da agência.
-        ● Conta Corrente e Conta Poupança, que herdarão os atributos e métodos de Conta, devem conter um atributo “tipo” para identificação do tipo de conta.
-        ● Funcionário (abstrata), deve conter atributos também de CPF e senha para que possam logar no sistema. Um atributo “cargo” também deve existir para identificar qual é o cargo daquele funcionário. Este atributo pode existir na própria classe Funcionario ou diretamente em suas classes filhas.
-        ● Gerente, que estenderá de Funcionário deve ter um atributo de identificação da agência que é responsável por gerir. 
+        * Cliente deve ter os atributos de senha e CPF para que possam logar no sistema interno.
+        * Conta, que deverá ser uma classe abstrata, deve conter os atributos de CPF do titular, para relacionar a conta com o usuário logado no sistema, e o saldo. Adicionalmente, a conta deve ter um atributo identificador da agência.
+        * Conta Corrente e Conta Poupança, que herdarão os atributos e métodos de Conta, devem conter um atributo “tipo” para identificação do tipo de conta.
+        * Funcionário (abstrata), deve conter atributos também de CPF e senha para que possam logar no sistema. Um atributo “cargo” também deve existir para identificar qual é o cargo daquele funcionário. Este atributo pode existir na própria classe Funcionario ou diretamente em suas classes filhas.
+        * Gerente, que estenderá de Funcionário deve ter um atributo de identificação da agência que é responsável por gerir. 
         
 * Características de Funcionamento:
     Este sistema será executado como um menu interativo no console. Na versão final (a ser entregue) é esperado que o sistema seja populado com os valores referentes aos clientes, contas e funcionários através da leitura de um arquivo de texto. Para testes iniciais, entretanto, valores podem ser atribuídos diretamente. Passos de Execução. No menu inicial o usuário deverá fornecer seu CPF e senha para logar. O sistema deve ser capaz de identificar, no momento do login se o usuário é um Cliente, Gerente, Diretor ou Presidente.
@@ -42,17 +42,17 @@ O objetivo deste trabalho é promover o desenvolvimento de um pequeno sistema ba
         2. Relatórios
             a. Saldo. O sistema deverá imprimir o saldo na tela do terminal.
             b. Relatório de tributação da conta corrente.
-                i. O relatório de tributação deverá apresentar o total gasto nas operações até o momento do relatório.
-                ii. Adicionalmente deverão ser informados os valores que o banco cobra por cada operação bancária.
-                iii. Para cada saque será cobrado o valor de R$0.10 (dez centavos).
-                iv. Para cada depósito será cobrado o valor de R$0.10 (dez centavos).
-                v. Para cada transferência será cobrado o valor de R$0.20 (dez centavos) que deverá ser cobrado apenas do remetente.
+                * i. O relatório de tributação deverá apresentar o total gasto nas operações até o momento do relatório.
+                *ii. Adicionalmente deverão ser informados os valores que o banco cobra por cada operação bancária.
+                * iii. Para cada saque será cobrado o valor de R$0.10 (dez centavos).
+                * iv. Para cada depósito será cobrado o valor de R$0.10 (dez centavos).
+                * v. Para cada transferência será cobrado o valor de R$0.20 (dez centavos) que deverá ser cobrado apenas do remetente.
             c. Relatório de Rendimento da poupança.
-                i. Retorna uma simulação do valor de rendimento da poupança no prazo informado. Neste caso o cliente deverá informar o valor em dinheiro e a quantidade de dias que pretende simular. O sistema deverá informar o rendimento desse dinheiro para o prazo informado.
+                * i. Retorna uma simulação do valor de rendimento da poupança no prazo informado. Neste caso o cliente deverá informar o valor em dinheiro e a quantidade de dias que pretende simular. O sistema deverá informar o rendimento desse dinheiro para o prazo informado.
            
             d. Desafio:
-                i. Criar uma classe seguro de vida que possa ser contratado pelo cliente onde o mesmo informa o valor que será segurado. No ato da contratação será debitado 20% do valor contratado como tributo do seguro.
-                ii. Incluir no relatório de tributação o valor referente ao seguro de vida, caso este cliente possua estas informações.
+                * i. Criar uma classe seguro de vida que possa ser contratado pelo cliente onde o mesmo informa o valor que será segurado. No ato da contratação será debitado 20% do valor contratado como tributo do seguro.
+                * ii. Incluir no relatório de tributação o valor referente ao seguro de vida, caso este cliente possua estas informações.
     - Caso 2:
         Caso o usuário seja um Funcionário no cargo de Gerente o sistema fornecerá um menu com opções de:
         1. Movimentações e Informações da Conta.
@@ -62,13 +62,13 @@ O objetivo deste trabalho é promover o desenvolvimento de um pequeno sistema ba
         2. Relatórios
             a. Saldo. O sistema deverá imprimir o saldo na tela do terminal.
             b. Relatório de tributação da conta corrente.
-                i. O relatório de tributação deverá apresentar o total gasto nas operações até o momento do relatório.
-                ii. Adicionalmente deverão ser informados os valores que o banco cobra por cada operação bancária.
-                iii. Para cada saque será cobrado o valor de R$0.10 (dez centavos).
-                iv. Para cada depósito será cobrado o valor de R$0.10 (dez centavos).
-                v. Para cada transferência será cobrado o valor de R$0.20 (dez centavos) que deverá ser cobrado apenas do remetente.
+                * i. O relatório de tributação deverá apresentar o total gasto nas operações até o momento do relatório.
+                * ii. Adicionalmente deverão ser informados os valores que o banco cobra por cada operação bancária.
+                * iii. Para cada saque será cobrado o valor de R$0.10 (dez centavos).
+                * iv. Para cada depósito será cobrado o valor de R$0.10 (dez centavos).
+                * v. Para cada transferência será cobrado o valor de R$0.20 (dez centavos) que deverá ser cobrado apenas do remetente.
             c. Relatório de Rendimento da poupança.
-                i. Retorna uma simulação do valor de rendimento da poupança no prazo informado. Neste caso o cliente deverá informar o valor em dinheiro e a quantidade de dias que pretende simular. O sistema deverá informar orendimento desse dinheiro para o prazo informado.
+                * i. Retorna uma simulação do valor de rendimento da poupança no prazo informado. Neste caso o cliente deverá informar o valor em dinheiro e a quantidade de dias que pretende simular. O sistema deverá informar orendimento desse dinheiro para o prazo informado.
             d. Relatório do número contas na mesma agência em que este gerente trabalha.
     - Caso 3:
         Caso o usuário seja um Funcionário no cargo de Diretor o sistema fornecerá um menu com todas as opções anteriores, adicionando:
