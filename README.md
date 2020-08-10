@@ -6,7 +6,9 @@ Projeto final da matéria Java 1 na [Residência de Software](http://serratec.or
 ---------------------------------------------------------------------------------------------------------------------------------------------
 Conteúdo do trabalho:
 
-# Sistema Bancário
+# Projeto final da disciplina de Java 1
+Sistema Bancário
+
 O trabalho final da disciplina de Java 1 ( orientação a objeto ) consiste em uma atividade continuada paralela aos exercícios propostos na apostila da Caelum.
 O objetivo deste trabalho é promover o desenvolvimento de um pequeno sistema bancário utilizando os tópicos apresentados e desenvolvidos na disciplina.
 
