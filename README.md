@@ -1,7 +1,7 @@
 # Projeto_Final_Java_1
 Projeto final da matéria Java 1 na [Residência de Software](http://serratec.org/residencia-de-software/).
 
-- Feito em grupo com [Maria Clara Barbosa Estrella](https://github.com/mariaclarabarbosa), [Wenny Campos Teixeira](https://github.com/wennycampos), [Luis Felipe Granja](https://github.com/lfcgranja) e Thiago Probst Coelho Vieira.
+- Feito em grupo com [Maria Clara Barbosa Estrella](https://github.com/mariaclarabarbosa), [Wenny Campos Teixeira](https://github.com/wennycampos), [Luis Felipe Granja](https://github.com/lfcgranja) e [Thiago Probst Coelho Vieira](https://github.com/ThiagoProbst).
 
 ---------------------------------------------------------------------------------------------------------------------------------------------
 Conteúdo do trabalho:
