@@ -1,12 +1,13 @@
 # Projeto_Final_Java_1
 Projeto final da matéria Java 1 na [Residência de Software](http://serratec.org/residencia-de-software/).
 
-- Feito em grupo com [Maria Clara Barbosa Estrella](https://github.com/mariaclarabarbosa), [Wenny Campos Teixeira](https://github.com/wennycampos), Luis Felipe Granja e Thiago Probst Coelho Vieira.
+- Feito em grupo com [Maria Clara Barbosa Estrella](https://github.com/mariaclarabarbosa), [Wenny Campos Teixeira](https://github.com/wennycampos), [Luis Felipe Granja](https://github.com/lfcgranja) e Thiago Probst Coelho Vieira.
 
 ---------------------------------------------------------------------------------------------------------------------------------------------
 Conteúdo do trabalho:
 
 # Projeto final da disciplina de Java 1
+
 Sistema Bancário
 
 O trabalho final da disciplina de Java 1 ( orientação a objeto ) consiste em uma atividade continuada paralela aos exercícios propostos na apostila da Caelum.
