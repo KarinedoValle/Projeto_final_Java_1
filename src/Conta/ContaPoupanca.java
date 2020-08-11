@@ -4,9 +4,9 @@ public class ContaPoupanca extends Conta{
 	
 	private String TipoConta;
 
-	public ContaPoupanca(int cpf, double saldo, int agencia, String tipoConta) {
-		super(cpf, saldo, agencia);
-		TipoConta = tipoConta;
+	public ContaPoupanca(String cpf, double saldo, int agencia, String tipoConta) {
+		super(cpf, saldo, agencia, tipoConta);
+		this.TipoConta = tipoConta;
 	}
 
 	public ContaPoupanca() {
@@ -27,4 +27,6 @@ public class ContaPoupanca extends Conta{
             valorFinal = valor * rendimentoPoupancaDia * dias;
         return "O rendimento do valor R$" + valorInicial + " durante " + dias + " dias é de R$" + (valorFinal - valorInicial) + "\nO valor total é R$" + valorFinal;
     }
+
+	
 }

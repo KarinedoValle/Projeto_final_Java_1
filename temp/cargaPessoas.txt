@@ -1,0 +1,10 @@
+10010010010;Thiago Probst;1001;Funcionario;Diretor;200
+20020020020;Felipe Granja;2002;Funcionario;Diretor;202
+30030030030;Wenny Campos;3003;Funcionario;Gerente;200
+40040040040;Maria Clara;4004;Funcionario;Presidente
+50050050050;Karine do Valle;5005;Funcionario;Gerente;202
+60060060060;Cliente1;6006;Cliente
+70070070070;Cliente2;7007;Cliente
+80080080080;Cliente3;8008;Cliente
+90090090090;Cliente4;9009;Cliente
+11011011011;Cliente5;1111;Cliente

@@ -5,32 +5,41 @@ import Conta.Conta;
 public class Pessoa extends Conta {
 
 	private String nome;
-	private int cpf;
+	private String cpf;
 	private int senha;
+	private String tipo;
 	
-	public Pessoa(String nome, int cpf, int senha) {
+	public Pessoa() {}
+	
+	public Pessoa(String cpf, String nome, int senha, String tipo) {
 		this.nome = nome;
 		this.cpf = cpf;
 		this.senha = senha;
 		
 	}
 	
-	public Pessoa() {}
 
+	
+	//Getters and Setters
+	
 	public String getNome() {
 		return nome;
 	}
 
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
-
-	public int getCpf() {
-		return cpf;
-	}
-
-	public void setCpf(int cpf) {
-		this.cpf = cpf;
 	}
 
 	public int getSenha() {

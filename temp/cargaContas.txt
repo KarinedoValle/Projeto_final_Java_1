@@ -1,0 +1,9 @@
+10010010010;0.0;5;ContaCorrente;
+20020020020;100.0;6;ContaCorrente;
+30030030030;100.0;5;ContaCorrente;
+40040040040;0.0;6;ContaCorrente;
+50050050050;1000.0;5;ContaCorrente;
+60060060060;0.0;5;ContaPoupanca;
+70070070070;0.0;5;ContaPoupanca;
+80080080080;0.0;5;ContaPoupanca;
+90090090090;0.0;5;ContaPoupanca;

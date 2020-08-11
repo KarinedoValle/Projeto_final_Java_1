@@ -9,12 +9,13 @@ public abstract class Funcionario extends Pessoa{
 		super();
 	}
 
-	public Funcionario(String nome, String cargo, int cpf, int senha) {
-		super(nome, cpf, senha);
+	public Funcionario(String cpf, String nome, int senha, String tipo, String cargo) {
+		super(cpf, nome, senha, tipo);
 		this.cargo = cargo;
 
 	}
 
+	
 	public String getCargo() {
 		return cargo;
 	}
