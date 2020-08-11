@@ -9,7 +9,7 @@ public abstract class Funcionario extends Pessoa{
 		super();
 	}
 
-	public Funcionario(String nome, String cargo, int cpf, int senha) {
+	public Funcionario(String nome, String cargo, String cpf, int senha) {
 		super(nome, cpf, senha);
 		this.cargo = cargo;
 

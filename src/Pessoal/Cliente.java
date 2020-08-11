@@ -11,7 +11,7 @@ public class Cliente extends Pessoa{
 	public Cliente() {
 		super();}
 
-	public Cliente(String nome, int cpf, int senha) {
+	public Cliente(String nome, String cpf, int senha) {
 		super(nome, cpf, senha);}
 	
 		    //menu

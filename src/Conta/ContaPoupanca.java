@@ -4,7 +4,7 @@ public class ContaPoupanca extends Conta{
 	
 	private String TipoConta;
 
-	public ContaPoupanca(int cpf, double saldo, int agencia, String tipoConta) {
+	public ContaPoupanca(String cpf, double saldo, int agencia, String tipoConta) {
 		super(cpf, saldo, agencia);
 		TipoConta = tipoConta;
 	}

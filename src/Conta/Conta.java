@@ -2,11 +2,11 @@ package Conta;
 
 public abstract class Conta implements Tributos{
 
-	private int cpf;
+	private String cpf;
 	private double saldo;
 	private int agencia;
 
-	public Conta(int cpf, double saldo, int agencia) {
+	public Conta(String cpf, double saldo, int agencia) {
 		super();
 		this.cpf = cpf;
 		this.saldo = saldo;
@@ -17,11 +17,11 @@ public abstract class Conta implements Tributos{
 		super();
 	}
 
-	public int getCpf() {
+	public String getCpf() {
 		return cpf;
 	}
 
-	public void setCpf(int cpf) {
+	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
 

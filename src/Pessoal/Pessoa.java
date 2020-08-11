@@ -5,10 +5,10 @@ import Conta.Conta;
 public class Pessoa extends Conta {
 
 	private String nome;
-	private int cpf;
+	private String cpf;
 	private int senha;
 	
-	public Pessoa(String nome, int cpf, int senha) {
+	public Pessoa(String nome, String cpf, int senha) {
 		this.nome = nome;
 		this.cpf = cpf;
 		this.senha = senha;
@@ -25,11 +25,11 @@ public class Pessoa extends Conta {
 		this.nome = nome;
 	}
 
-	public int getCpf() {
+	public String getCpf() {
 		return cpf;
 	}
 
-	public void setCpf(int cpf) {
+	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
 
