@@ -5,12 +5,21 @@ public abstract class Conta implements Tributos{
 	private String cpf;
 	private double saldo;
 	private int agencia;
+	private double totalTributos = 0.0;
+	private double vSeguro = 0;
+	static int totalAgencia1 =0;
+	static int totalAgencia2 = 0;
 
 	public Conta(String cpf, double saldo, int agencia) {
 		super();
 		this.cpf = cpf;
 		this.saldo = saldo;
 		this.agencia = agencia;
+		if(agencia == 001) {
+			totalAgencia1++;
+		} else if(agencia == 002) {
+			totalAgencia2++;
+		}
 	}
 
 	public Conta() {
@@ -39,6 +48,40 @@ public abstract class Conta implements Tributos{
 
 	public void setAgencia(int agencia) {
 		this.agencia = agencia;
+		if(agencia == 001) {
+			totalAgencia1++;
+		} else if(agencia == 002) {
+			totalAgencia2++;
+		}
+	}
+	
+	public void setTotalTributos(double totalTributos) {
+		this.totalTributos = totalTributos;
+	}
+
+	
+	public double getTotalTributos() {
+		return totalTributos;
+	}
+
+	
+	
+	public double getvSeguro() {
+		return vSeguro;
+	}
+
+	public void setvSeguro(double vSeguro) {
+		this.vSeguro = vSeguro;
+	}
+	
+	
+
+	public static int getTotalAgencia1() {
+		return totalAgencia1;
+	}
+
+	public static int getTotalAgencia2() {
+		return totalAgencia2;
 	}
 
 	// operacoes
@@ -79,6 +122,7 @@ public abstract class Conta implements Tributos{
 
 	public String contratarSeguro(double valor) {
         double valorSegurado = valor - calculoTributoSeguroDeVida(valor);
+        vSeguro += calculoTributoSeguroDeVida(valor);
         return "O valor segurado é: " + valorSegurado;
     }
 	
