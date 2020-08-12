@@ -12,7 +12,7 @@ import criacaoDeDados.EjetarDados;
 
 public class SistemaInterno {
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws Exception {
 		
 		String path = "./src/criacaoDeDados/Dados.txt";
 		

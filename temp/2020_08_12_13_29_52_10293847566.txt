@@ -1,0 +1,33 @@
+*******Informacao dos Clientes********
+
+Nome do cliente: Fernanda
+CPF do cliente: 12345678900
+Numero da agencia: 1
+
+Nome do cliente: Gabriel
+CPF do cliente: 13579246800
+Numero da agencia: 2
+
+Nome do cliente: Fernando
+CPF do cliente: 112345678900
+Numero da agencia: 1
+
+Nome do cliente: Gabi
+CPF do cliente: 113579246800
+Numero da agencia: 2
+
+Nome do cliente: Bianca
+CPF do cliente: 10293847566
+Numero da agencia: 2
+
+Nome do cliente: Bernardo
+CPF do cliente: 66574839201
+Numero da agencia: 1
+
+Nome do cliente: Gabriela
+CPF do cliente: 67584930210
+Numero da agencia: 2
+
+Nome do cliente: Flavia
+CPF do cliente: 10102929384
+Numero da agencia: 1
