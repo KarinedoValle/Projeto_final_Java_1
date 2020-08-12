@@ -7,39 +7,59 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
 
-import Conta.Conta;
+import Pessoal.Pessoa;
+import conta.Conta;
 
 public class RelatorioGerente {
 
-	public static int totalDeContasSupervisionadas(Conta conta) throws IOException {
+	public static int totalDeContasSupervisionadas(Conta conta, Pessoa pessoa) throws IOException {
 		int total = 0;
-		if(conta.getAgencia() == 001) {
+		if (conta.getAgencia() == 001) {
 			total = Conta.getTotalAgencia1();
-		} else if(conta.getAgencia() == 002) {
+		} else if (conta.getAgencia() == 002) {
 			total = Conta.getTotalAgencia2();
 		}
-		
-		pathGerente(conta, total);
+
+		pathGerente(conta, pessoa, total);
 		return total;
 	}
-	
-	
-	public static void pathGerente(Conta conta, int total) throws IOException {
+
+	public static void pathGerente(Conta conta, Pessoa pessoa, int total) throws IOException {
 		final String PATH_BASICO = "./temp/";
 		final String EXTENSAO = ".txt";
 		Date date = new Date();
 		SimpleDateFormat formatar = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss");
-		String path = PATH_BASICO + formatar.format(date) + "_" + conta.getCpf() + EXTENSAO;
-		escritorGerente(path, conta, total);	
+		String path = PATH_BASICO + formatar.format(date) + "_" + pessoa.getNome() + EXTENSAO;
+		escritorGerente(path, conta, pessoa, total);
 	}
-	
-	public static void escritorGerente(String path, Conta conta, int total) throws IOException {
+
+	public static void escritorGerente(String path, Conta conta, Pessoa p, int total) throws IOException {
 		BufferedWriter buffWrite = new BufferedWriter(new FileWriter(path));
 		String linha = "";
-		linha = "*******Total de Contas********";
+		Date date = new Date();
+		SimpleDateFormat formatar = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+		linha = "************************************************************";
+		buffWrite.append(linha + "\n");
+		linha = "                                    _______                          ";
+		buffWrite.append(linha + "\n");
+		linha = "                             ° Hero | | | | Bank °                             ";
+		buffWrite.append(linha + "\n");
+		linha = "";
+		buffWrite.append(linha + "\n");
+		linha = "************************************************************";
+		buffWrite.append(linha + "\n");
+		linha = "-----------------Relatório: Total de contas-----------------";
+		buffWrite.append("\n" + linha + "\n");
+		linha = "Olá, " + p.getNome() + "!";
 		buffWrite.append(linha + "\n");
 		linha = "Gerente: " + conta.getCpf() + "\nTotal de contas supervisionadas: " + total;
-			buffWrite.append(linha + "\n");
+		buffWrite.append(linha + "\n");
+		linha = "-----------------------Fim do relatório------------------------";
+		buffWrite.append(linha + "\n");
+		linha = "Data: " + formatar.format(date);
+		buffWrite.append(linha + "\n");
+		linha = "________________Volte Sempre!________________";
+		buffWrite.append(linha + "\n");
 
 		buffWrite.close();
 	}

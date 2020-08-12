@@ -2,16 +2,15 @@ package Pessoal;
 
 import java.util.Scanner;
 
-import Conta.Conta;
-import Conta.ContaCorrente;
-import Conta.ContaPoupanca;
+import conta.Conta;
+import conta.ContaCorrente;
+import conta.ContaPoupanca;
 
-public class Cliente extends Pessoa{
+public class Cliente extends Pessoa {
 
-	
-		
 	public Cliente() {
-		super();}
+		super();
+	}
 
 	public Cliente(String nome, String cpf, String tipo, int senha) {
 		super(nome, cpf, senha, tipo);
@@ -19,11 +18,10 @@ public class Cliente extends Pessoa{
 
 	@Override
 	public String toString() {
-		return "\nCliente \n[getNome()=" + getNome() + ",\ngetCpf()=" + getCpf() + ",\ngetSenha()=" + getSenha()
-				+ ",\ngetSaldo()=" + getSaldo() + ",\ngetAgencia()=" + getAgencia() + "]";
+		return "\n-------------------------- \n   Cliente instanciado   \n-------------------------- \nNome: "
+				+ getNome() + "\nCPF: " + getCpf() + "\nSenha: " + getSenha() + "\nSaldo: " + getSaldo() + "\nAgência: "
+				+ getAgencia() + "\n--------------------------";
+
 	}
-	
 
-	
 }
-

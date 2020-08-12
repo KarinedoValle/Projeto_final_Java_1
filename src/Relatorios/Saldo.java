@@ -6,8 +6,9 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import Conta.Conta;
 import Pessoal.Pessoa;
+import conta.Conta;
+import uteis.Uteis;
 
 public class Saldo {
 
@@ -23,21 +24,31 @@ public class Saldo {
 	
 	public static void escritorSaldo(String path, Conta conta, Pessoa p) throws IOException {
 		Date date = new Date();
-		SimpleDateFormat formatar = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss");
+		SimpleDateFormat formatar = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 		
 		BufferedWriter buffWrite = new BufferedWriter(new FileWriter(path));
 		String linha = "";
-		linha = "**************Saldo**************";
+		linha = "************************************************************"; 
+		buffWrite.append(linha + "\n");
+		linha = "                                    _______                          ";
+		buffWrite.append(linha + "\n");
+		linha = "                             ° Hero | | | | Bank °                             ";
+		buffWrite.append(linha + "\n");
+		linha = "";
+		buffWrite.append(linha + "\n");
+		linha = "************************************************************";
+		buffWrite.append(linha + "\n");
+		linha = "----------------------------Saldo---------------------------";
 		buffWrite.append("\n" + linha + "\n");
-		linha = "Ola, " + p.getNome();
+		linha = "Olá, " + p.getNome() + "!";
 		buffWrite.append(linha + "\n");
 		linha = "Saldo atual: " + conta.getSaldo();
 		buffWrite.append(linha + "\n");
-		linha = "**********Fim do Saldo**********"; 
+		linha = "------------------------Fim do saldo------------------------"; 
 		buffWrite.append(linha + "\n");
 		linha = "Data: " + formatar.format(date);
 		buffWrite.append(linha + "\n");
-		linha = "__________Volte Sempre!_________";
+		linha = "________________Volte Sempre!________________";
 		buffWrite.append(linha + "\n");
 
 		buffWrite.close();

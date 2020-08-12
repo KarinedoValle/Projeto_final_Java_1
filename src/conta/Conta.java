@@ -1,4 +1,6 @@
-package Conta;
+package conta;
+
+import java.text.DecimalFormat;
 
 public abstract class Conta implements Tributos{
 
@@ -6,6 +8,7 @@ public abstract class Conta implements Tributos{
 	private double saldo;
 	private int agencia;
 	private double totalTributos = 0.0;
+	static double totalTributosBanco = 0.0;
 	private double vSeguro = 0;
 	static int totalAgencia1 =0;
 	static int totalAgencia2 = 0;
@@ -21,6 +24,8 @@ public abstract class Conta implements Tributos{
 			totalAgencia2++;
 		}
 	}
+
+
 
 	public Conta() {
 		super();
@@ -55,17 +60,17 @@ public abstract class Conta implements Tributos{
 		}
 	}
 	
-	public void setTotalTributos(double totalTributos) {
-		this.totalTributos = totalTributos;
-	}
 
 	
 	public double getTotalTributos() {
 		return totalTributos;
 	}
 
-	
-	
+	public void setTotalTributos(double totalTributos) {
+		this.totalTributos = totalTributos;
+	}
+
+
 	public double getvSeguro() {
 		return vSeguro;
 	}
@@ -83,6 +88,16 @@ public abstract class Conta implements Tributos{
 	public static int getTotalAgencia2() {
 		return totalAgencia2;
 	}
+	
+	public static double getTotalTributosBanco() {
+		return totalTributosBanco;
+	}
+	
+	public static void setTotalTributosBanco(double totalTributosBanco) {
+		Conta.totalTributosBanco = totalTributosBanco;
+	}
+
+	
 
 	// operacoes
 	public String sacar(double valor) {
@@ -92,7 +107,7 @@ public abstract class Conta implements Tributos{
 			saldoAnterior = this.getSaldo();
 			novoSaldo = getSaldo() - valor;
 			this.setSaldo(novoSaldo);
-			return "Saldo anterior: " + saldoAnterior + "\nValor sacado: " + valor + "\nSaldo atual: " + novoSaldo;
+			return "Saldo anterior: " + saldoAnterior + "\nValor sacado: " + valor + "\nSaldo atual: " + "%.2f, novoSaldo";
 		} else {
 			return "Saldo insuficiente para saque.";
 		}
@@ -103,7 +118,7 @@ public abstract class Conta implements Tributos{
 		double saldoAnterior = this.getSaldo();
 		novoSaldo = this.getSaldo() + valor;
 		this.setSaldo(novoSaldo);
-		return "Saldo anterior: " + saldoAnterior + "\nValor depositado: " + valor + "\nSaldo atual: " + novoSaldo;
+		return "Saldo anterior: " + saldoAnterior + "\nValor depositado: " + valor + "\nSaldo atual: " +"%.2f, novoSaldo";
 	}
 
 	public String transferir(double valor, Conta conta) {
@@ -123,6 +138,8 @@ public abstract class Conta implements Tributos{
 	public String contratarSeguro(double valor) {
         double valorSegurado = valor - calculoTributoSeguroDeVida(valor);
         vSeguro += calculoTributoSeguroDeVida(valor);
+        double totalTributosGeral =  getTotalTributos() + calculoTributoSeguroDeVida(valor);
+        setTotalTributosBanco(totalTributosGeral);
         return "O valor segurado é: " + valorSegurado;
     }
 	

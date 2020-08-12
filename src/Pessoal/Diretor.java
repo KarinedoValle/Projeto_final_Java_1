@@ -2,25 +2,26 @@ package Pessoal;
 
 import java.util.Scanner;
 
-import Conta.Conta;
-import Conta.ContaCorrente;
-import Conta.ContaPoupanca;
+import conta.Conta;
+import conta.ContaCorrente;
+import conta.ContaPoupanca;
 
 public class Diretor extends Funcionario {
 
 	public Diretor() {
-		super();}
+		super();
+	}
 
 	public Diretor(String nome, String cpf, String cargo, int senha) {
-		super(nome, cargo, cpf, senha);}
+		super(nome, cargo, cpf, senha);
+	}
 
 	@Override
 	public String toString() {
-		return "\nDiretor \n[getNome()=" + getNome() + ",\ngetCpf()=" + getCpf() + ",\ngetSenha()=" + getSenha()
-				+ ",\ngetSaldo()=" + getSaldo() + ",\ngetAgencia()=" + getAgencia() + "]";
+		return "\n-------------------------- \n   Diretor instanciado    \n-------------------------- \nNome: "
+				+ getNome() + "\nCPF: " + getCpf() + "\nSenha: " + getSenha() + "\nCargo: " + getTipo() + "\nSaldo: "
+				+ getSaldo() + "\nAgência: " + getAgencia() + "\n--------------------------";
+
 	}
 
-
-				
-	}
-
+}

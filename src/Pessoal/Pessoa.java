@@ -1,8 +1,8 @@
 package Pessoal;
 
-import Conta.Conta;
+import conta.Conta;
 
-public class Pessoa extends Conta {
+public class Pessoa extends Conta implements Comparable<Pessoa>{
 	
 	private String tipo;
 	private String nome;
@@ -50,6 +50,9 @@ public class Pessoa extends Conta {
 		this.tipo = tipo;
 	}
 	
-	
+	@Override
+    public int compareTo(Pessoa pessoa) {
+		return this.getNome().compareToIgnoreCase(pessoa.getNome());
+    }
 	
 }

@@ -1,4 +1,4 @@
-package Conta;
+package conta;
 
 public class ContaPoupanca extends Conta{
 	
@@ -42,8 +42,8 @@ public class ContaPoupanca extends Conta{
 
 	@Override
 	public String toString() {
-		return "\nContaPoupanca \n[TipoConta=" + TipoConta + ",\ngetCpf()=" + getCpf() + ",\ngetSaldo()=" + getSaldo()
-				+ ",\ngetAgencia()=" + getAgencia() + "]";
+		return "\n---------------------------- \n Conta Poupança instanciada \n---------------------------- \nCPF do titular: " + getCpf()
+		+ "\nAgência: " + getAgencia() + "\nSaldo: " + getSaldo() + "\n----------------------------";
 	}
 	
 	

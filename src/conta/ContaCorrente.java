@@ -1,4 +1,4 @@
-package Conta;
+package conta;
 
 public class ContaCorrente extends Conta {
 	
@@ -34,6 +34,8 @@ public class ContaCorrente extends Conta {
             this.setSaldo(novoSaldo);
             double total = getTotalTributos() + saque;
             setTotalTributos(total);
+            double totalTributosGeral =  getTotalTributosBanco() + getTotalTributos();
+            setTotalTributosBanco(totalTributosGeral);
             return "Saldo anterior: " + saldoAnterior + "\nValor sacado: " + valor + "\nSaldo atual: " + novoSaldo;
         } else {
             return "Saldo insuficiente para saque.";
@@ -48,6 +50,8 @@ public class ContaCorrente extends Conta {
         this.setSaldo(novoSaldo);
         double total = getTotalTributos() + deposito;
         setTotalTributos(total);
+        double totalTributosGeral =  getTotalTributosBanco() + getTotalTributos();
+        setTotalTributosBanco(totalTributosGeral);
         return "Saldo anterior: " + saldoAnterior + "\nValor depositado: " + valor + "\nSaldo atual: " + novoSaldo;
     }
  
@@ -63,6 +67,8 @@ public class ContaCorrente extends Conta {
             conta.setSaldo(conta.getSaldo() + valor);
             double total = getTotalTributos() + transferencia;
             setTotalTributos(total);
+            double totalTributosGeral =  getTotalTributosBanco() + getTotalTributos();
+            setTotalTributosBanco(totalTributosGeral);
             return "Saldo anterior: " + saldoAnterior + "\nValor sacado: " + valor + "\nSaldo atual: " + novoSaldo;
         } else {
             return "Saldo insuficiente para transferencia.";
@@ -71,8 +77,8 @@ public class ContaCorrente extends Conta {
 
 	@Override
 	public String toString() {
-		return "\nContaCorrente \n[TipoConta=" + TipoConta + ",\ngetCpf()=" + getCpf() + ",\ngetSaldo()=" + getSaldo()
-				+ ",\ngetAgencia()=" + getAgencia() + "]";
+		return "\n---------------------------- \n Conta Corrente instanciada \n---------------------------- \nCPF do titular: "
+				+ getCpf() + "\nAgência: " + getAgencia() + "\nSaldo: " + getSaldo() + "\n----------------------------";
 	}
     
     

@@ -6,8 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import Conta.Conta;
 import Pessoal.Pessoa;
+import conta.Conta;
 import criacaoDeDados.EjetarDados;
 
 public class SistemaInterno {

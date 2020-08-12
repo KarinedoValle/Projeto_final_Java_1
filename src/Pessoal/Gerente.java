@@ -2,9 +2,9 @@ package Pessoal;
 
 import java.util.Scanner;
 
-import Conta.Conta;
-import Conta.ContaCorrente;
-import Conta.ContaPoupanca;
+import conta.Conta;
+import conta.ContaCorrente;
+import conta.ContaPoupanca;
 
 public class Gerente extends Funcionario{
 	
@@ -32,8 +32,9 @@ public class Gerente extends Funcionario{
 
 	@Override
 	public String toString() {
-		return "\nGerente \n[agencia=" + agencia + ",\ngetNome()=" + getNome() + ",\ngetCpf()=" + getCpf()
-				+ ",\ngetSenha()=" + getSenha() + ",\ngetSaldo()=" + getSaldo() + "]";
+		return "\n-------------------------- \n   Gerente instanciado    \n-------------------------- \nNome: "
+				+ getNome() + "\nCPF: " + getCpf() + "\nSenha: " + getSenha() + "\nCargo: " + getTipo() + "\nSaldo: "
+				+ getSaldo() + "\nAgência: " + getAgencia() + "\n--------------------------";
 	}
 
 

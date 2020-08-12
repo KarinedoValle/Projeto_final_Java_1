@@ -1,0 +1,19 @@
+************************************************************
+                          _______                          
+                   ° Hero | | | | Bank °                   
+
+************************************************************
+
+-----------------Tributação da Conta Corrente----------------
+Olá, Gabriel!
+No dia 12/08/2020 15:00:24
+
+Você gastou um total de R$0.0
+************Final da Tributação************
+No nosso banco, a tributação para cada operação é:
+Para o saque: 0.1
+Para o depósito:0.1
+Para as transferências: 0.2
+-----------------------Fim do relatório------------------------
+Data: 12/08/2020 15:00:24
+________________________Volte Sempre!________________________
