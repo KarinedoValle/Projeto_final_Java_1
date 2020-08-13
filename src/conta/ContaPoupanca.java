@@ -32,12 +32,10 @@ public class ContaPoupanca extends Conta{
 		this.valorRendimento = valorRendimento;
 	}
 
-	public String calcularRendimentoPoupanca(double valor, int dias) {
-        double valorInicial = valor;
-        double valorFinal = valor;
-            valorFinal = valor * rendimentoPoupancaDia * dias;
-            valorRendimento = valorFinal;
-        return "O rendimento do valor R$" + valorInicial + " durante " + dias + " dias é de R$" + (valorFinal - valorInicial) + "\nO valor total é R$" + valorFinal;
+	public double calcularRendimentoPoupanca(double valor, int dias) {
+        double valorFinal = valor * rendimentoPoupancaDia * dias;
+            this.valorRendimento = valorFinal;
+        return valorFinal;
     }
 
 	@Override

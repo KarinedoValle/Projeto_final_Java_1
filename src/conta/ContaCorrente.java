@@ -26,17 +26,15 @@ public class ContaCorrente extends Conta {
 	
 	@Override
     public String sacar(double valor) {
-		double saldoAnterior;
         double novoSaldo;
         if (this.getSaldo() > valor + saque) {
-            saldoAnterior = this.getSaldo();
-            novoSaldo = getSaldo() - valor - saque;
+            novoSaldo = this.getSaldo() - valor - saque;
             this.setSaldo(novoSaldo);
             double total = getTotalTributos() + saque;
             setTotalTributos(total);
             double totalTributosGeral =  getTotalTributosBanco() + getTotalTributos();
             setTotalTributosBanco(totalTributosGeral);
-            return "Saldo anterior: " + saldoAnterior + "\nValor sacado: " + valor + "\nSaldo atual: " + novoSaldo;
+            return "Saque realizado com sucesso!";
         } else {
             return "Saldo insuficiente para saque.";
         }
@@ -44,24 +42,19 @@ public class ContaCorrente extends Conta {
  
     @Override
     public String depositar(double valor) {
-    	double novoSaldo;
-        double saldoAnterior = this.getSaldo();
-        novoSaldo = this.getSaldo() + valor - deposito;
+    	double novoSaldo = this.getSaldo() + valor - deposito;
         this.setSaldo(novoSaldo);
         double total = getTotalTributos() + deposito;
         setTotalTributos(total);
         double totalTributosGeral =  getTotalTributosBanco() + getTotalTributos();
         setTotalTributosBanco(totalTributosGeral);
-        return "Saldo anterior: " + saldoAnterior + "\nValor depositado: " + valor + "\nSaldo atual: " + novoSaldo;
+        return "Depósito realizado com sucesso!";
     }
  
     @Override
     public String transferir(double valor, Conta conta) {
-    	double saldoAnterior;
-        double novoSaldo;
         if (this.getSaldo() > valor + transferencia) {
-            saldoAnterior = this.getSaldo();
-            novoSaldo = getSaldo() - valor - transferencia;
+            double novoSaldo = getSaldo() - valor - transferencia;
             sacar(valor);
             this.setSaldo(novoSaldo);
             conta.setSaldo(conta.getSaldo() + valor);
@@ -69,9 +62,9 @@ public class ContaCorrente extends Conta {
             setTotalTributos(total);
             double totalTributosGeral =  getTotalTributosBanco() + getTotalTributos();
             setTotalTributosBanco(totalTributosGeral);
-            return "Saldo anterior: " + saldoAnterior + "\nValor sacado: " + valor + "\nSaldo atual: " + novoSaldo;
+            return "Transferência realizada com sucesso!";
         } else {
-            return "Saldo insuficiente para transferencia.";
+            return "Saldo insuficiente para transferência.";
         }
     }
 

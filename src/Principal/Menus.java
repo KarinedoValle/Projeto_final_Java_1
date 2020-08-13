@@ -5,22 +5,22 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
-import Pessoal.Pessoa;
-import Relatorios.RelDeposito;
-import Relatorios.RelSaque;
-import Relatorios.RelTransferencia;
-import Relatorios.RelatorioDiretor;
-import Relatorios.RelatorioGerente;
-import Relatorios.RelatorioPresidente;
-import Relatorios.RendimentoPoupanca;
-import Relatorios.Saldo;
-import Relatorios.TributacaoCC;
-import Relatorios.TributoSeguroDeVida;
 import conta.Conta;
 import conta.ContaCorrente;
 import conta.ContaPoupanca;
 import conta.Tributos;
 import enums.PessoasEnum;
+import pessoal.Pessoa;
+import relatorios.RelDeposito;
+import relatorios.RelSaque;
+import relatorios.RelTransferencia;
+import relatorios.RelatorioDiretor;
+import relatorios.RelatorioGerente;
+import relatorios.RelatorioPresidente;
+import relatorios.RendimentoPoupanca;
+import relatorios.Saldo;
+import relatorios.TributacaoCC;
+import relatorios.TributoSeguroDeVida;
 import uteis.Uteis;
 
 public class Menus {
@@ -122,8 +122,12 @@ public class Menus {
 				System.out.println("------------------------------------------------------------");
 				System.out.println("1 - Movimentações da conta");
 				System.out.println("2 - Relatórios");
+				System.out.println("3 - Sair");
 				System.out.print(" Opção: ");
 				op1 = scan.nextInt();
+				if (op1 == 3) {
+					menuGeral(listaPessoas, listaConta);
+				}
 			} while (op1 != 1 && op1 != 2);
 
 			// submenu
@@ -168,7 +172,7 @@ public class Menus {
 					System.out.println("1 - Saldo");
 					System.out.println("2 - Relatório de tributação da conta corrente");
 					System.out.println("3 - Relatório de rendimento da poupança");
-					System.out.println("4 - Tributação referente ao seguro de vida");
+					System.out.println("4 - Relatório de tributação referente ao seguro de vida");
 					System.out.println("5 - Voltar ao menu anterior");
 					System.out.print(" Opção: ");
 					op2 = scan.nextInt();
@@ -213,10 +217,21 @@ public class Menus {
 					}
 				} while (continua);
 
-				System.out.println(conta.sacar(valor));
+				double saldoAnterior = conta.getSaldo();
+				conta.sacar(valor);
+				double novoSaldo = conta.getSaldo();
+				
+				//Resposta do submenu de saque
+				Uteis.logo();
+				System.out.println("------------------------------------------------------------");
+				System.out.println("                            Saque                            ");
+				System.out.println("------------------------------------------------------------");
+				System.out.format("\nSaldo anterior: %.2f", saldoAnterior); 
+				System.out.format("\nValor sacado: %.2f", valor); 
+				System.out.format("\nSaldo atual: %.2f", novoSaldo);
 				RelSaque.pathSaque(conta, p, valor);
 
-				System.out.println("\nDeseja fazer outra operação? ");
+				System.out.println("\n\nDeseja fazer outra operação? ");
 				System.out.println("1 - Sim");
 				System.out.println("2 - Não");
 				System.out.print(" Opção: ");
@@ -246,10 +261,20 @@ public class Menus {
 						scan.nextLine();
 					}
 				} while (continua);
-				System.out.println(conta.depositar(valor));
+				double saldoAnterior = conta.getSaldo();
+				conta.depositar(valor);
+				double novoSaldo = conta.getSaldo();
+				
+				//Resposta do submenu de depósito
+				Uteis.logo();
+				System.out.println("------------------------------------------------------------");
+				System.out.println("                          Depósito                          ");
+				System.out.println("------------------------------------------------------------");
+				System.out.format("\nSaldo anterior: %.2f", saldoAnterior); 
+				System.out.format("\nValor depositado: %.2f", valor); 
+				System.out.format("\nSaldo atual: %.2f", novoSaldo);
 				RelDeposito.pathDeposito(conta, valor, p);
-				System.out.println();
-				System.out.println("Deseja fazer outra operação? ");
+				System.out.println("\n\nDeseja fazer outra operação? ");
 				System.out.println("1 - Sim");
 				System.out.println("2 - Não");
 				System.out.print(" Opção: ");
@@ -289,10 +314,21 @@ public class Menus {
 						destinatario = listaConta.get(i);
 					}
 				}
-				System.out.println(conta.transferir(valor, destinatario));
+				double saldoAnterior = conta.getSaldo();
+				conta.transferir(valor, destinatario);
+				double novoSaldo = conta.getSaldo();
+				
+				//Resposta do submenu de transferência
+				Uteis.logo();
+				System.out.println("------------------------------------------------------------");
+				System.out.println("                        Transferência                        ");
+				System.out.println("------------------------------------------------------------");
+				System.out.format("\nSaldo anterior: %.2f", saldoAnterior); 
+				System.out.format("\nValor transferido: %.2f", valor); 
+				System.out.format("\nSaldo atual: %.2f", novoSaldo);
+				
 				RelTransferencia.pathTransferencia(conta, valor, p, cpf);
-				System.out.println();
-				System.out.println("Deseja fazer outra operação? ");
+				System.out.println("\n\nDeseja fazer outra operação? ");
 				System.out.println("1 - Sim");
 				System.out.println("2 - Não");
 				System.out.print(" Opção: ");
@@ -304,14 +340,13 @@ public class Menus {
 				System.out.println("                  Contratar seguro de vida                  ");
 				System.out.println("------------------------------------------------------------");
 				System.out.println("0 - Cancelar");
-				System.out.print("Digite o valor que será assegurado: ");
+				System.out.print("Digite o valor que será segurado: ");
 				valor = scan.nextDouble();
 				if (valor == 0) {
 					menuGeral(listaPessoas, listaConta);
 				}
-				System.out.println(conta.contratarSeguro(valor));
-				System.out.println();
-				System.out.println("Deseja fazer outra operação? ");
+				System.out.format("\nO valor segurado é: %.2f", conta.contratarSeguro(valor));
+				System.out.println("\n\nDeseja fazer outra operação? ");
 				System.out.println("1 - Sim");
 				System.out.println("2 - Não");
 				System.out.print(" Opção: ");
@@ -322,11 +357,10 @@ public class Menus {
 				System.out.println("------------------------------------------------------------");
 				System.out.println("                            Saldo                           ");
 				System.out.println("------------------------------------------------------------");
-				System.out.print("Saldo atual de: R$" + conta.getSaldo());
+				System.out.format("\nSaldo atual de: R$ %.2f", conta.getSaldo());
 				Saldo.pathsaldo(p, conta);
 
-				System.out.println();
-				System.out.println("Deseja fazer outra operação? ");
+				System.out.println("\n\nDeseja fazer outra operação? ");
 				System.out.println("1 - Sim");
 				System.out.println("2 - Não");
 				System.out.print(" Opção: ");
@@ -339,14 +373,13 @@ public class Menus {
 					System.out.println("         Relatório de tributação da conta corrente          ");
 					System.out.println("------------------------------------------------------------");
 					System.out.println("\nTributacão por operação bancária");
-					System.out.println("- Tributacão para saque: R$ " + Tributos.saque);
-					System.out.println("- Tributacão para depósito: R$ " + Tributos.deposito);
-					System.out.println("- Tributacão para transferência: R$ " + Tributos.transferencia);
-					System.out.println("- Tributacão para seguro de vida em porcentagem: " + Tributos.transferencia);
-					System.out.println("Gasto total da tributação: " + conta.getTotalTributos());
+					System.out.format("\n- Tributacão para saque: R$ %.2f", Tributos.saque);
+					System.out.format("\n- Tributacão para depósito: R$ %.2f", Tributos.deposito);
+					System.out.format("\n- Tributacão para transferência: R$ %.2f", Tributos.transferencia);
+					System.out.format("\n- Tributacão para seguro de vida em porcentagem: %.2f", Tributos.transferencia);
+					System.out.format("\n\nGasto total da tributação: %.2f", conta.getTotalTributos());
 					TributacaoCC.pathTributacao(p, conta);
-					System.out.println();
-					System.out.println("Deseja fazer outra operação? ");
+					System.out.println("\n\nDeseja fazer outra operação? ");
 					System.out.println("1 - Sim");
 					System.out.println("2 - Não");
 					System.out.print(" Opção: ");
@@ -363,17 +396,27 @@ public class Menus {
 					System.out.println("------------------------------------------------------------");
 					System.out.println("\nSimulação");
 					System.out.println("0 - Cancelar");
-					System.out.print("Digite o valor que deseja simular: ");
+					System.out.print("\nDigite o valor que deseja simular: ");
 					valor = scan.nextDouble();
 					if (valor == 0) {
 						menuGeral(listaPessoas, listaConta);
 					}
 					System.out.print("Digite a quantidade de dias desejada: ");
 					dias = scan.nextInt();
-					System.out.println(((ContaPoupanca) conta).calcularRendimentoPoupanca(valor, dias));
+					double valorFinal = ((ContaPoupanca) conta).calcularRendimentoPoupanca(valor, dias);
+					double rendimento = valorFinal - valor;
+					
+					//Resposta do submenu relatório de rendimento da poupança
+					Uteis.logo();
+					System.out.println("------------------------------------------------------------");
+					System.out.println("             Relatório de rendimento da poupança             ");
+					System.out.println("------------------------------------------------------------"); 
+					System.out.format("\nO rendimento de R$ %.2f", valor);
+					System.out.print(" durante " + dias + " dias é de ");
+					System.out.format("R$ %.2f", rendimento);
+					System.out.format("\nO valor total é R$ %.2f", valorFinal);
 					RendimentoPoupanca.pathRendimento(conta, p, valor, dias);
-					System.out.println();
-					System.out.println("Deseja fazer outra operação? ");
+					System.out.println("\n\nDeseja fazer outra operação? ");
 					System.out.println("1 - Sim");
 					System.out.println("2 - Não");
 					System.out.print(" Opção: ");
@@ -381,17 +424,17 @@ public class Menus {
 
 				} catch (ClassCastException cce) {
 					System.out.println("Você não possui conta poupança para realizar esta operação!");
+					Thread.sleep(2 * 1000);
 				}
 			} else if (op3 == 24) {
 				Uteis.logo();
 				System.out.println("------------------------------------------------------------");
 				System.out.println("        Relatorio de tributação do seguro de vida           ");
 				System.out.println("------------------------------------------------------------");
-				System.out.println("Tributação do seguro de vida em porcentagem: " + Tributos.porcentagemSeguroDeVida);
-				System.out.println("Gasto na tributação do seguro de vida: " + conta.getvSeguro());
+				System.out.format("\nTributação do seguro de vida em porcentagem: %.2f", Tributos.porcentagemSeguroDeVida);
+				System.out.format("\n\nGasto com a tributação do seguro de vida: R$ %.2f", conta.getvSeguro());
 				TributoSeguroDeVida.pathSeguro(conta, p);
-				System.out.println();
-				System.out.println("Deseja fazer outra operação? ");
+				System.out.println("\n\nDeseja fazer outra operação? ");
 				System.out.println("1 - Sim");
 				System.out.println("2 - Não");
 				System.out.print(" Opção: ");
@@ -419,7 +462,7 @@ public class Menus {
 				.println("Total de contas de sua agência: " + RelatorioGerente.totalDeContasSupervisionadas(conta, p));
 
 		System.out.println();
-		System.out.println("Deseja fazer outra operação? ");
+		System.out.println("\nGostaria de mudar para a interface cliente? ");
 		System.out.println("1 - Sim");
 		System.out.println("2 - Não");
 		System.out.print(" Opção: ");
@@ -445,7 +488,7 @@ public class Menus {
 		RelatorioDiretor.informacaoClientes(conta, p, listaPessoas, listaConta);
 
 		System.out.println();
-		System.out.println("Gostaria de mudar para a interface cliente? ");
+		System.out.println("\nGostaria de mudar para a interface cliente? ");
 		System.out.println("1 - Sim");
 		System.out.println("2 - Não");
 		System.out.print(" Opção: ");
@@ -466,13 +509,13 @@ public class Menus {
 
 		Uteis.logo();
 		System.out.println("------------------------------------------------------------");
-		System.out.println("     Relatorio: Valor total capital armazenado no Banco      ");
+		System.out.println("    Relatorio: Valor total do capital armazenado no Banco    ");
 		System.out.println("------------------------------------------------------------");
 		System.out
-				.println("Total de capital armazenado: R$ " + RelatorioPresidente.totalDeCapital(conta, p, listaConta));
+				.format("\nTotal de capital armazenado: R$ %.2f", RelatorioPresidente.totalDeCapital(conta, p, listaConta));
 
 		System.out.println();
-		System.out.println("Gostaria de mudar para a interface cliente? ");
+		System.out.println("\n\nGostaria de mudar para a interface cliente? ");
 		System.out.println("1 - Sim");
 		System.out.println("2 - Não");
 		System.out.print(" Opção: ");

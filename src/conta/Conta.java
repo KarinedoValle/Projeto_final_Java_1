@@ -101,46 +101,37 @@ public abstract class Conta implements Tributos{
 
 	// operacoes
 	public String sacar(double valor) {
-		double saldoAnterior;
-		double novoSaldo;
 		if (this.saldo > valor) {
-			saldoAnterior = this.getSaldo();
-			novoSaldo = getSaldo() - valor;
+			double novoSaldo = this.getSaldo() - valor;
 			this.setSaldo(novoSaldo);
-			return "Saldo anterior: " + saldoAnterior + "\nValor sacado: " + valor + "\nSaldo atual: " + "%.2f, novoSaldo";
+			return "Saque realizado com sucesso!";
 		} else {
 			return "Saldo insuficiente para saque.";
 		}
 	}
 
 	public String depositar(double valor) {
-		double novoSaldo;
-		double saldoAnterior = this.getSaldo();
-		novoSaldo = this.getSaldo() + valor;
+		double novoSaldo = this.getSaldo() + valor;
 		this.setSaldo(novoSaldo);
-		return "Saldo anterior: " + saldoAnterior + "\nValor depositado: " + valor + "\nSaldo atual: " +"%.2f, novoSaldo";
+		return "Depósito realizado com sucesso!";
 	}
 
 	public String transferir(double valor, Conta conta) {
-		double saldoAnterior;
-		double novoSaldo;
 		if (this.saldo > valor) {
-			saldoAnterior = this.getSaldo();
-			novoSaldo = getSaldo() - valor;
 			sacar(valor);
 			conta.setSaldo(conta.getSaldo() + valor);
-			return "Saldo anterior: " + saldoAnterior + "\nValor sacado: " + valor + "\nSaldo atual: " + novoSaldo;
+			return "Transferência realizada com sucesso!";
 		} else {
 			return "Saldo insuficiente para transferência.";
 		}
 	}
 
-	public String contratarSeguro(double valor) {
+	public double contratarSeguro(double valor) {
         double valorSegurado = valor - calculoTributoSeguroDeVida(valor);
-        vSeguro += calculoTributoSeguroDeVida(valor);
+        this.vSeguro += calculoTributoSeguroDeVida(valor);
         double totalTributosGeral =  getTotalTributos() + calculoTributoSeguroDeVida(valor);
         setTotalTributosBanco(totalTributosGeral);
-        return "O valor segurado é: " + valorSegurado;
+        return valorSegurado;
     }
 	
 	 public double calculoTributoSeguroDeVida(double valor) {

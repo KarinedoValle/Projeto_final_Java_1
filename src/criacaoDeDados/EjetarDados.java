@@ -7,17 +7,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import Pessoal.Cliente;
-import Pessoal.Diretor;
-import Pessoal.Funcionario;
-import Pessoal.Gerente;
-import Pessoal.Pessoa;
-import Pessoal.Presidente;
 import conta.Conta;
 import conta.ContaCorrente;
 import conta.ContaPoupanca;
 import enums.ContasEnum;
 import enums.PessoasEnum;
+import pessoal.Cliente;
+import pessoal.Diretor;
+import pessoal.Funcionario;
+import pessoal.Gerente;
+import pessoal.Pessoa;
+import pessoal.Presidente;
 
 public class EjetarDados {
 
