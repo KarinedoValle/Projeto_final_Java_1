@@ -17,8 +17,8 @@ public class RelatorioDiretor {
 			throws IOException {
 		Collections.sort(listaPessoas);
 		for (int i = 0; i < listaPessoas.size(); i++) {
-			System.out.println("-------------------------- \nNome do cliente: " + listaPessoas.get(i).getNome() + "\nCPF do cliente: "
-					+ listaPessoas.get(i).getCpf() + "\nNumero da agência: " + listaConta.get(i).getAgencia() + "\n--------------------------");
+			System.out.println("----------------------------------- \nNome do cliente: " + listaPessoas.get(i).getNome() + "\nCPF do cliente: "
+					+ listaPessoas.get(i).getCpf() + "\nNumero da agência: " + listaConta.get(i).getAgencia() + "\n-----------------------------------");
 			System.out.println();
 		}
 
@@ -58,8 +58,8 @@ public class RelatorioDiretor {
 
 		Collections.sort(listaPessoas);
 		for (int i = 0; i < listaPessoas.size(); i++) {
-			linha = "Nome do cliente: " + listaPessoas.get(i).getNome() + "\nCPF do cliente: "
-					+ listaPessoas.get(i).getCpf() + "\nNúmero da agência: " + listaConta.get(i).getAgencia();
+			linha = "-------------------------------------------- \nNome do cliente: " + listaPessoas.get(i).getNome() + "\nCPF do cliente: "
+					+ listaPessoas.get(i).getCpf() + "\nNúmero da agência: " + listaConta.get(i).getAgencia() + "\n--------------------------------------------";
 			buffWrite.append("\n" + linha + "\n");
 		}
 			linha = "\n--------------------------Fim do relatório--------------------------";

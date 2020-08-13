@@ -50,7 +50,7 @@ public class RelatorioPresidente {
 		buffWrite.append("\n" + linha + "\n\n");
 		linha = "Olá, " + p.getNome() + "!";
 		buffWrite.append(linha + "\n");
-		linha = "O capital total presente no banco é de R$ : " + capital;
+		linha = "O capital total presente no banco é de: R$  " + capital;
 		buffWrite.append(linha + "\n\n");
 		linha = "-------------------------Fim do relatório--------------------------";
 		buffWrite.append(linha + "\n");

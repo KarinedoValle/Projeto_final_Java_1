@@ -93,7 +93,8 @@ public class Menus {
 		System.out.println("------------------------------------------------------------");
 		System.out.println("                 Bem-vindo(a) ao Hero Bank!                  ");
 		System.out.println("------------------------------------------------------------");
-		System.out.println("Gostaria de logar com:");
+		System.out.println("Olá, " + p.getNome());
+		System.out.println("Gostaria de logar como:");
 		System.out.println("1 - Cliente");
 		System.out.println("2 - Funcionário");
 		System.out.print(" Opção: ");

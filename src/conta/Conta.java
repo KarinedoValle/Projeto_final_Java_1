@@ -124,7 +124,7 @@ public abstract class Conta implements Tributos {
 	public double contratarSeguro(double valor) {
 		double valorSegurado = valor - this.calculoTributoSeguroDeVida(valor);
 		this.vSeguro += this.calculoTributoSeguroDeVida(valor);
-		double total = this.getTotalTributos() + transferencia;
+		double total = this.getTotalTributos() + this.calculoTributoSeguroDeVida(valor);
 		this.setTotalTributos(total);
 		return valorSegurado;
 	}
