@@ -39,9 +39,11 @@ public class Menus {
 				System.out.println("------------------------------------------------------------");
 				System.out.print("Digite seu CPF: ");
 				cpf = scan.next();
+				Integer.parseInt(cpf);
 				System.out.print("Digite sua senha: ");
 				int senha = scan.nextInt();
 
+				
 				for (int i = 0; i < listaPessoas.size(); i++) {
 					pl = listaPessoas.get(i);
 					if (pl.getCpf().equalsIgnoreCase(cpf)) {
@@ -83,6 +85,10 @@ public class Menus {
 				System.out.println("\nCPF não cadastrado.");
 				Thread.sleep(2 * 1000);
 			} catch (InputMismatchException ex) {
+				System.out.println("\nPor favor, digite somente números.");
+				Thread.sleep(2 * 1000);
+				scan.nextLine();
+			} catch (NumberFormatException ex) {
 				System.out.println("\nPor favor, digite somente números.");
 				Thread.sleep(2 * 1000);
 				scan.nextLine();
@@ -316,6 +322,8 @@ public class Menus {
 							System.out.println("\nPor favor, digite somente números.");
 							Thread.sleep(2 * 1000);
 							scan.nextLine();
+							Uteis.logo();
+							System.out.println("Opção inválida! Tente novamente.");
 
 						}
 					} while (continua);
@@ -345,6 +353,7 @@ public class Menus {
 						System.out.println("\nPor favor, digite somente números.");
 						Thread.sleep(2 * 1000);
 						scan.nextLine();
+		
 
 					} catch (Exception erro1) {
 						System.err.println(erro1.getMessage());
@@ -385,6 +394,8 @@ public class Menus {
 							System.out.println("\nPor favor, digite somente números.");
 							Thread.sleep(2 * 1000);
 							scan.nextLine();
+							Uteis.logo();
+							System.out.println("Opção inválida! Tente novamente.");
 
 						}
 					} while (continua);
@@ -417,6 +428,7 @@ public class Menus {
 						}
 						System.out.print("\nDigite o CPF do titular da conta de destino: ");
 						cpf = scan.next();
+						Integer.parseInt(cpf);
 						Conta cl = null;
 
 						for (int i = 0; i < listaConta.size(); i++) {
@@ -440,7 +452,12 @@ public class Menus {
 						System.out.println("\nPor favor, digite somente números.");
 						Thread.sleep(2 * 1000);
 						scan.nextLine();
-
+						
+					} catch (NumberFormatException ex) {
+						System.out.println("\nPor favor, digite somente números.");
+						Thread.sleep(2 * 1000);
+						scan.nextLine();
+					
 					} catch (Exception erro1) {
 						System.err.println(erro1.getMessage());
 						Thread.sleep(2 * 1000);
@@ -473,6 +490,8 @@ public class Menus {
 							System.out.println("\nPor favor, digite somente números.");
 							Thread.sleep(2 * 1000);
 							scan.nextLine();
+							Uteis.logo();
+							System.out.println("Opção inválida! Tente novamente.");
 
 						}
 					} while (continua);
@@ -515,6 +534,8 @@ public class Menus {
 								System.out.println("\nPor favor, digite somente números.");
 								Thread.sleep(2 * 1000);
 								scan.nextLine();
+								Uteis.logo();
+								System.out.println("Opção inválida! Tente novamente.");
 
 							}
 						} while (continua);
@@ -553,6 +574,7 @@ public class Menus {
 						System.out.println("\nPor favor, digite somente números.");
 						Thread.sleep(2 * 1000);
 						scan.nextLine();
+						
 
 					} catch (Exception erro1) {
 						System.err.println(erro1.getMessage());
@@ -581,6 +603,8 @@ public class Menus {
 							System.out.println("\nPor favor, digite somente números.");
 							Thread.sleep(2 * 1000);
 							scan.nextLine();
+							Uteis.logo();
+							System.out.println("Opção inválida! Tente novamente.");
 
 						}
 					} while (continua);
@@ -614,6 +638,8 @@ public class Menus {
 							System.out.println("\nPor favor, digite somente números.");
 							Thread.sleep(2 * 1000);
 							scan.nextLine();
+							Uteis.logo();
+							System.out.println("Opção inválida! Tente novamente.");
 
 						}
 					} while (continua);
@@ -653,6 +679,8 @@ public class Menus {
 								System.out.println("\nPor favor, digite somente números.");
 								Thread.sleep(2 * 1000);
 								scan.nextLine();
+								Uteis.logo();
+								System.out.println("Opção inválida! Tente novamente.");
 
 							}
 						} while (continua);
@@ -681,6 +709,7 @@ public class Menus {
 						System.out.println("\nPor favor, digite somente números.");
 						Thread.sleep(2 * 1000);
 						scan.nextLine();
+						
 
 					}
 				} while (continua);
@@ -706,6 +735,7 @@ public class Menus {
 						System.out.println("\nPor favor, digite somente números.");
 						Thread.sleep(2 * 1000);
 						scan.nextLine();
+						
 
 					}
 				} while (continua);	
@@ -743,6 +773,8 @@ public class Menus {
 								System.out.println("\nPor favor, digite somente números.");
 								Thread.sleep(2 * 1000);
 								scan.nextLine();
+								Uteis.logo();
+								System.out.println("Opção inválida! Tente novamente.");
 
 							}
 						} while (continua);
@@ -781,6 +813,8 @@ public class Menus {
 							System.out.println("\nPor favor, digite somente números.");
 							Thread.sleep(2 * 1000);
 							scan.nextLine();
+							Uteis.logo();
+							System.out.println("Opção inválida! Tente novamente.");
 
 						}
 					} while (continua);
@@ -831,6 +865,8 @@ public class Menus {
 					System.out.println("\nPor favor, digite somente números.");
 					Thread.sleep(2 * 1000);
 					scan.nextLine();
+					Uteis.logo();
+					System.out.println("Opção inválida! Tente novamente.");
 
 				}
 			} while (continua);
@@ -875,6 +911,8 @@ public class Menus {
 					System.out.println("\nPor favor, digite somente números.");
 					Thread.sleep(2 * 1000);
 					scan.nextLine();
+					Uteis.logo();
+					System.out.println("Opção inválida! Tente novamente.");
 
 				}
 			} while (continua);
@@ -920,6 +958,8 @@ public class Menus {
 					System.out.println("\nPor favor, digite somente números.");
 					Thread.sleep(2 * 1000);
 					scan.nextLine();
+					Uteis.logo();
+					System.out.println("Opção inválida! Tente novamente.");
 
 				}
 			} while (continua);
