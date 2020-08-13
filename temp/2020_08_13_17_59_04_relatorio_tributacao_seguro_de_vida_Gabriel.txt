@@ -4,14 +4,12 @@
 
 ************************************************************
 
--------------------Simulação de rendimento-------------------
+-----------------Tributação do seguro de vida-----------------
 
 Olá, Gabriel!
 Agência: 2
-Valor de aplicação: 50.0
-Quantidade de dias: 10
-Rendimento previsto: 18.5
+Valor do tributo: R$ 200.0
 
---------------------------Fim do relatório--------------------------
-Data: 13/08/2020 16:06:26
+-------------------------Fim do relatório--------------------------
+Data: 13/08/2020 17:59:04
 _________________Volte Sempre!________________

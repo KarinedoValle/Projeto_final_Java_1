@@ -7,7 +7,7 @@
 -----------------Tributação da Conta Corrente----------------
 
 Olá, Fernanda!
-Você gastou um total de R$ 10.4
+Você gastou um total de R$ 200.4
 
 -----------------------Final da Tributação-----------------------
 No nosso banco, a tributação para cada operação é:
@@ -16,5 +16,5 @@ Para o depósito: R$ 0.1
 Para as transferências: R$ 0.2
 
 -------------------------Fim do relatório--------------------------
-Data: 13/08/2020 15:29:46
+Data: 13/08/2020 17:53:42
 ________________Volte Sempre!________________

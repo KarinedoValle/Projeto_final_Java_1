@@ -4,14 +4,13 @@
 
 ************************************************************
 
--------------------Simulação de rendimento-------------------
+-------------------------Relatório de saque-----------------------
 
-Olá, Gabriel!
-Agência: 2
-Valor de aplicação: 50.0
-Quantidade de dias: 10
-Rendimento previsto: 18.5
+Olá, Flavia!
+Agência: 1
+Valor sacado: R$ 50.0
+Saldo: R$ 4999.9
 
---------------------------Fim do relatório--------------------------
-Data: 13/08/2020 15:47:13
+-------------------------Fim do relatório--------------------------
+Data: 13/08/2020 18:00:09
 _________________Volte Sempre!________________

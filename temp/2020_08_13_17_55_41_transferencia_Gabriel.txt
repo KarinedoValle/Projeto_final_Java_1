@@ -6,14 +6,14 @@
 
 -------------------Relatório de Transferência------------------
 
-Olá, Fernanda!
-Agência: 1
+Olá, Gabriel!
+Agência: 2
 Valor transferido: R$ 50.0
-Nome do destinatário: Gabriel
-CPF do destinatário: 13579246800
+Nome do destinatário: Fernanda
+CPF do destinatário: 12345678900
 
-Saldo atual: R$ 949.8
+Saldo atual: R$ 1950.0
 
 -------------------------Fim do relatório--------------------------
-Data: 13/08/2020 14:40:43
+Data: 13/08/2020 17:55:41
 _________________Volte Sempre!________________

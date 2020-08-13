@@ -39,7 +39,6 @@ public class Menus {
 				System.out.println("------------------------------------------------------------");
 				System.out.print("Digite seu CPF: ");
 				cpf = scan.next();
-				Integer.parseInt(cpf);
 				System.out.print("Digite sua senha: ");
 				int senha = scan.nextInt();
 
@@ -88,11 +87,7 @@ public class Menus {
 				System.out.println("\nPor favor, digite somente números.");
 				Thread.sleep(2 * 1000);
 				scan.nextLine();
-			} catch (NumberFormatException ex) {
-				System.out.println("\nPor favor, digite somente números.");
-				Thread.sleep(2 * 1000);
-				scan.nextLine();
-			}
+			} 
 
 		} while (continua);
 	}
@@ -424,11 +419,10 @@ public class Menus {
 						}
 
 						if (valor < 0) {
-							throw new Exception("Não é possível Transferir valores negativos.");
+							throw new Exception("Não é possível transferir valores negativos.");
 						}
-						System.out.print("\nDigite o CPF do titular da conta de destino: ");
+						System.out.print("\nDigite o CPF do titular do destinatário: ");
 						cpf = scan.next();
-						Integer.parseInt(cpf);
 						Conta cl = null;
 
 						for (int i = 0; i < listaConta.size(); i++) {
@@ -453,11 +447,6 @@ public class Menus {
 						Thread.sleep(2 * 1000);
 						scan.nextLine();
 						
-					} catch (NumberFormatException ex) {
-						System.out.println("\nPor favor, digite somente números.");
-						Thread.sleep(2 * 1000);
-						scan.nextLine();
-					
 					} catch (Exception erro1) {
 						System.err.println(erro1.getMessage());
 						Thread.sleep(2 * 1000);
@@ -651,6 +640,9 @@ public class Menus {
 					System.out.println("------------------------------------------------------------");
 					System.out.println("         Relatório de tributação da conta corrente          ");
 					System.out.println("------------------------------------------------------------");
+					if (conta.getTipo().equalsIgnoreCase(ContasEnum.CONTAPOUPANCA.name())) {
+						throw new ClassCastException();
+					}
 					System.out.println("\nTributacão por operação bancária");
 					System.out.format("\n- Tributacão para saque: R$ %.2f", Tributos.saque);
 					System.out.format("\n- Tributacão para depósito: R$ %.2f", Tributos.deposito);
@@ -687,7 +679,9 @@ public class Menus {
 					} while (r != 1 && r != 2);
 
 				} catch (ClassCastException cce) {
-					System.out.println("Voce não possui conta corrente para realizar esta operação!");
+					System.out.println("Você não possui conta corrente para realizar esta operação!");
+					Thread.sleep(2 * 1000);
+					menuCliente(listaPessoas, p, conta, listaConta);
 				}
 			} else if (op3 == 23) {
 				continua = true;
@@ -709,8 +703,10 @@ public class Menus {
 						System.out.println("\nPor favor, digite somente números.");
 						Thread.sleep(2 * 1000);
 						scan.nextLine();
-						
-
+					} catch (ClassCastException ex) {
+						System.out.println("Você não possui conta poupança para realizar esta operação!");
+						Thread.sleep(2 * 1000);
+						menuCliente(listaPessoas, p, conta, listaConta);
 					}
 				} while (continua);
 				
@@ -746,11 +742,11 @@ public class Menus {
 					System.out.println("------------------------------------------------------------");
 					System.out.println("             Relatório de rendimento da poupança             ");
 					System.out.println("------------------------------------------------------------");
-					System.out.format("\nO rendimento de R$ %.2f", valor);//é o que inserimos
+					System.out.format("\nO rendimento de R$ %.2f", valor);
 					System.out.print(" durante " + dias + " dias é de ");
-					System.out.format("R$ %.2f", rendimento);//
+					System.out.format("R$ %.2f", rendimento);
 					
-					System.out.format("\nO valor total é R$ %.2f", valorFinal);//valorFinal = rendimento
+					System.out.format("\nO valor total é R$ %.2f", valorFinal);
 					RendimentoPoupanca.pathRendimento(conta, p, valor, dias);
 					System.out.println();
 					r = 1;

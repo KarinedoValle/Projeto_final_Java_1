@@ -4,11 +4,13 @@
 
 ************************************************************
 
--------------Relatório: Total de capital no banco-------------
+-------------------------Relatório de saque-----------------------
 
-Olá, Flavia!
-O capital total presente no banco é de: R$  18250.0
+Olá, Fernanda!
+Agência: 1
+Valor sacado: R$ 50.0
+Saldo: R$ 949.9
 
 -------------------------Fim do relatório--------------------------
-Data: 13/08/2020 13:19:41
+Data: 13/08/2020 17:52:31
 _________________Volte Sempre!________________

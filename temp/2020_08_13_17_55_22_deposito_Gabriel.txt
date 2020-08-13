@@ -4,16 +4,13 @@
 
 ************************************************************
 
--------------------Relatório de Transferência------------------
+-----------------------Relatório de depósito----------------------
 
 Olá, Gabriel!
 Agência: 2
-Valor transferido: R$ 50.0
-Nome do destinatário: Flavia
-CPF do destinatário: 10102929384
-
-Saldo atual: R$ 1950.0
+Valor depositado: R$ 50.0
+Saldo: R$ 2000.0
 
 -------------------------Fim do relatório--------------------------
-Data: 13/08/2020 13:18:02
+Data: 13/08/2020 17:55:22
 _________________Volte Sempre!________________

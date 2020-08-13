@@ -4,14 +4,11 @@
 
 ************************************************************
 
--------------------Simulação de rendimento-------------------
+-------------Relatório: Total de capital no banco-------------
 
-Olá, Gabriel!
-Agência: 2
-Valor de aplicação: 50.0
-Quantidade de dias: 10
-Rendimento previsto: 0.018333333333333333
+Olá, Flavia!
+O capital total presente no banco é de: R$  18000.0
 
---------------------------Fim do relatório--------------------------
-Data: 13/08/2020 16:07:45
+-------------------------Fim do relatório--------------------------
+Data: 13/08/2020 17:59:40
 _________________Volte Sempre!________________

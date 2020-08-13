@@ -8,10 +8,10 @@
 
 Olá, Gabriel!
 Agência: 2
-Valor de aplicação: 1000.0
-Quantidade de dias: 30
-Rendimento previsto: 1110.0
+Valor de aplicação: 50.0
+Quantidade de dias: 10
+Rendimento previsto: 0.018333333333333333
 
 --------------------------Fim do relatório--------------------------
-Data: 13/08/2020 15:46:07
+Data: 13/08/2020 17:56:39
 _________________Volte Sempre!________________
