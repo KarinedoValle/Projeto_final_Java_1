@@ -82,33 +82,49 @@ public class Menus {
 			} catch (NullPointerException ex) {
 				System.out.println("\nCPF não cadastrado.");
 				Thread.sleep(2 * 1000);
+			} catch (InputMismatchException ex) {
+				System.out.println("\nPor favor, digite somente números.");
+				Thread.sleep(2 * 1000);
+				scan.nextLine();
 			}
+
 		} while (continua);
 	}
 
 	public static void menuFuncionario(Pessoa p, Conta c, List<Pessoa> listaPessoas, List<Conta> listaConta)
 			throws Exception {
+		boolean continua = true;
 
-		int op;
-		Uteis.logo();
-		System.out.println("------------------------------------------------------------");
-		System.out.println("                 Bem-vindo(a) ao Hero Bank!                  ");
-		System.out.println("------------------------------------------------------------");
-		System.out.println("Gostaria de logar como:");
-		System.out.println("1 - Cliente");
-		System.out.println("2 - Funcionário");
-		System.out.print(" Opção: ");
-		op = scan.nextInt();
+		do {
+			try {
+				int op;
+				Uteis.logo();
+				System.out.println("------------------------------------------------------------");
+				System.out.println("                 Bem-vindo(a) ao Hero Bank!                  ");
+				System.out.println("------------------------------------------------------------");
+				System.out.println("Gostaria de logar como:");
+				System.out.println("1 - Cliente");
+				System.out.println("2 - Funcionário");
+				System.out.print(" Opção: ");
+				op = scan.nextInt();
 
-		if (op == 1) {
-			menuCliente(listaPessoas, p, c, listaConta);
-		} else if (op == 2 && p.getTipo().equalsIgnoreCase(PessoasEnum.GERENTE.name())) {
-			menuGerente(listaPessoas, p, c, listaConta);
-		} else if (op == 2 && p.getTipo().equalsIgnoreCase(PessoasEnum.DIRETOR.name())) {
-			menuDiretor(p, c, listaPessoas, listaConta);
-		} else if (op == 2 && p.getTipo().equalsIgnoreCase(PessoasEnum.PRESIDENTE.name())) {
-			menuPresidente(p, c, listaConta, listaPessoas);
-		}
+				if (op == 1) {
+					menuCliente(listaPessoas, p, c, listaConta);
+				} else if (op == 2 && p.getTipo().equalsIgnoreCase(PessoasEnum.GERENTE.name())) {
+					menuGerente(listaPessoas, p, c, listaConta);
+				} else if (op == 2 && p.getTipo().equalsIgnoreCase(PessoasEnum.DIRETOR.name())) {
+					menuDiretor(p, c, listaPessoas, listaConta);
+				} else if (op == 2 && p.getTipo().equalsIgnoreCase(PessoasEnum.PRESIDENTE.name())) {
+					menuPresidente(p, c, listaConta, listaPessoas);
+				}
+
+				continua = false;
+			} catch (InputMismatchException ex) {
+				System.out.println("\nPor favor, digite somente números.");
+				Thread.sleep(2 * 1000);
+				scan.nextLine();
+			}
+		} while (continua);
 	}
 
 	public static void menuCliente(List<Pessoa> listaPessoas, Pessoa p, Conta conta, List<Conta> listaConta)
@@ -119,43 +135,63 @@ public class Menus {
 		String cpf;
 
 		do {
+			boolean continua = true;
 			do {
-				Uteis.logo();
-				if (op1 != 1 && op1 != 2) {
-					System.out.println("Opção inválida! Tente novamente.");
-				}
-				System.out.println("------------------------------------------------------------");
-				System.out.println("                   O que deseja consultar?                   ");
-				System.out.println("------------------------------------------------------------");
-				System.out.println("1 - Movimentações da conta");
-				System.out.println("2 - Relatórios");
-				System.out.println("3 - Sair");
-				System.out.print(" Opção: ");
-				op1 = scan.nextInt();
-				if (op1 == 3) {
-					Uteis.sair();
-					Thread.sleep(3 * 1000);
-					menuGeral(listaPessoas, listaConta);
-				}
+				do {
+					try {
+						Uteis.logo();
+						if (op1 != 1 && op1 != 2) {
+							System.out.println("Opção inválida! Tente novamente.");
+						}
+						System.out.println("------------------------------------------------------------");
+						System.out.println("                   O que deseja consultar?                   ");
+						System.out.println("------------------------------------------------------------");
+						System.out.println("1 - Movimentações da conta");
+						System.out.println("2 - Relatórios");
+						System.out.println("3 - Sair");
+						System.out.print(" Opção: ");
+						op1 = scan.nextInt();
+						if (op1 == 3) {
+							Uteis.sair();
+							Thread.sleep(3 * 1000);
+							menuGeral(listaPessoas, listaConta);
+						}
+						continua = false;
+					} catch (InputMismatchException ex) {
+						System.out.println("\nPor favor, digite somente números.");
+						Thread.sleep(2 * 1000);
+						scan.nextLine();
+					}
+				} while (continua);
 			} while (op1 != 1 && op1 != 2);
 
 			// submenu
 			if (op1 == 1) {
 				do {
-					Uteis.logo();
-					if (op2 < 1 || op2 > 4) {
-						System.out.println("Opcao inválida! Tente novamente.");
-					}
-					System.out.println("------------------------------------------------------------");
-					System.out.println("                   Movimentações da conta                   ");
-					System.out.println("------------------------------------------------------------");
-					System.out.println("1 - Saque");
-					System.out.println("2 - Depósito");
-					System.out.println("3 - Transferência");
-					System.out.println("4 - Contratar seguro de vida");
-					System.out.println("5 - Voltar ao menu anterior");
-					System.out.print(" Opção: ");
-					op2 = scan.nextInt();
+					continua = true;
+					do {
+						try {
+							Uteis.logo();
+							if (op2 < 1 || op2 > 4) {
+								System.out.println("Opcao inválida! Tente novamente.");
+							}
+							System.out.println("------------------------------------------------------------");
+							System.out.println("                   Movimentações da conta                   ");
+							System.out.println("------------------------------------------------------------");
+							System.out.println("1 - Saque");
+							System.out.println("2 - Depósito");
+							System.out.println("3 - Transferência");
+							System.out.println("4 - Contratar seguro de vida");
+							System.out.println("5 - Voltar ao menu anterior");
+							System.out.print(" Opção: ");
+							op2 = scan.nextInt();
+							continua = false;
+						} catch (InputMismatchException ex) {
+							System.out.println("\nPor favor, digite somente números.");
+							Thread.sleep(2 * 1000);
+							scan.nextLine();
+						}
+					} while (continua);
 				} while (op2 < 1 || op2 > 5);
 				if (op2 == 1) {
 					op3 = 11;
@@ -171,20 +207,30 @@ public class Menus {
 
 			} else if (op1 == 2) {
 				do {
-					Uteis.logo();
-					if (op2 < 1 || op2 > 4) {
-						System.out.println("Opcao inválida! Tente novamente.");
-					}
-					System.out.println("------------------------------------------------------------");
-					System.out.println("                         Relatórios                         ");
-					System.out.println("------------------------------------------------------------");
-					System.out.println("1 - Saldo");
-					System.out.println("2 - Relatório de tributação da conta corrente");
-					System.out.println("3 - Relatório de rendimento da poupança");
-					System.out.println("4 - Relatório de tributação referente ao seguro de vida");
-					System.out.println("5 - Voltar ao menu anterior");
-					System.out.print(" Opção: ");
-					op2 = scan.nextInt();
+					continua = true;
+					do {
+						try {
+							Uteis.logo();
+							if (op2 < 1 || op2 > 4) {
+								System.out.println("Opcao inválida! Tente novamente.");
+							}
+							System.out.println("------------------------------------------------------------");
+							System.out.println("                         Relatórios                         ");
+							System.out.println("------------------------------------------------------------");
+							System.out.println("1 - Saldo");
+							System.out.println("2 - Relatório de tributação da conta corrente");
+							System.out.println("3 - Relatório de rendimento da poupança");
+							System.out.println("4 - Relatório de tributação referente ao seguro de vida");
+							System.out.println("5 - Voltar ao menu anterior");
+							System.out.print(" Opção: ");
+							op2 = scan.nextInt();
+							continua = false;
+						} catch (InputMismatchException ex) {
+							System.out.println("\nPor favor, digite somente números.");
+							Thread.sleep(2 * 1000);
+							scan.nextLine();
+						}
+					} while (continua);
 				} while (op2 < 1 || op2 > 5);
 
 				if (op2 == 1) {
@@ -201,9 +247,9 @@ public class Menus {
 			}
 
 			if (op3 == 11) {
-				boolean continua = true;
 
 				do {
+					continua = true;
 					try {
 						Uteis.logo();
 						System.out.println("------------------------------------------------------------");
@@ -225,6 +271,11 @@ public class Menus {
 							throw new Exception("Não é possível sacar valores negativos.");
 						}
 						continua = false;
+					} catch (InputMismatchException ex) {
+						System.out.println("\nPor favor, digite somente números.");
+						Thread.sleep(2 * 1000);
+						scan.nextLine();
+
 					} catch (Exception erro1) {
 						System.err.println(erro1.getMessage());
 						Thread.sleep(2 * 1000);
@@ -248,19 +299,30 @@ public class Menus {
 				System.out.println();
 				r = 1;
 				do {
-					if (r != 1 && r != 2) {
-						Uteis.logo();
-						System.out.println("Opção inválida! Tente novamente.");
-					}
-					System.out.println("\nDeseja fazer outra operação? ");
-					System.out.println("1 - Sim");
-					System.out.println("2 - Não");
-					System.out.print(" Opção: ");
-					r = scan.nextInt();
+					continua = true;
+					do {
+						try {
+							if (r != 1 && r != 2) {
+								Uteis.logo();
+								System.out.println("Opção inválida! Tente novamente.");
+							}
+							System.out.println("\nDeseja fazer outra operação? ");
+							System.out.println("1 - Sim");
+							System.out.println("2 - Não");
+							System.out.print(" Opção: ");
+							r = scan.nextInt();
+							continua = false;
+						} catch (InputMismatchException ex) {
+							System.out.println("\nPor favor, digite somente números.");
+							Thread.sleep(2 * 1000);
+							scan.nextLine();
+
+						}
+					} while (continua);
 				} while (r != 1 && r != 2);
 
 			} else if (op3 == 12) {
-				boolean continua = true;
+				continua = true;
 				do {
 					try {
 						Uteis.logo();
@@ -279,6 +341,11 @@ public class Menus {
 							throw new Exception("Não é possível depositar valores negativos.");
 						}
 						continua = false;
+					} catch (InputMismatchException ex) {
+						System.out.println("\nPor favor, digite somente números.");
+						Thread.sleep(2 * 1000);
+						scan.nextLine();
+
 					} catch (Exception erro1) {
 						System.err.println(erro1.getMessage());
 						Thread.sleep(2 * 1000);
@@ -301,19 +368,32 @@ public class Menus {
 				System.out.println();
 				r = 1;
 				do {
-					if (r != 1 && r != 2) {
-						Uteis.logo();
-						System.out.println("Opção inválida! Tente novamente.");
-					}
-					System.out.println("\nDeseja fazer outra operação? ");
-					System.out.println("1 - Sim");
-					System.out.println("2 - Não");
-					System.out.print(" Opção: ");
-					r = scan.nextInt();
+					continua = true;
+					do {
+						try {
+							if (r != 1 && r != 2) {
+								Uteis.logo();
+								System.out.println("Opção inválida! Tente novamente.");
+							}
+							System.out.println("\nDeseja fazer outra operação? ");
+							System.out.println("1 - Sim");
+							System.out.println("2 - Não");
+							System.out.print(" Opção: ");
+							r = scan.nextInt();
+							continua = false;
+						} catch (InputMismatchException ex) {
+							System.out.println("\nPor favor, digite somente números.");
+							Thread.sleep(2 * 1000);
+							scan.nextLine();
+
+						}
+					} while (continua);
 				} while (r != 1 && r != 2);
 
 			} else if (op3 == 13) {
-				boolean continua = true;
+				Conta contaDestinatario = null;
+				Pessoa destinatario = null;
+				continua = true;
 				do {
 					try {
 						Uteis.logo();
@@ -333,50 +413,69 @@ public class Menus {
 						}
 
 						if (valor < 0) {
-							throw new Exception("Não é possível depositar valores negativos.");
+							throw new Exception("Não é possível Transferir valores negativos.");
+						}
+						System.out.print("\nDigite o CPF do titular da conta de destino: ");
+						cpf = scan.next();
+						Conta cl = null;
+
+						for (int i = 0; i < listaConta.size(); i++) {
+							cl = listaConta.get(i);
+							if (cl.getCpf().equalsIgnoreCase(cpf)) {
+								contaDestinatario = listaConta.get(i);
+							}
+						}
+						for (int i = 0; i < listaConta.size(); i++) {
+							cl = listaConta.get(i);
+							if (cl.getCpf().equalsIgnoreCase(cpf)) {
+								destinatario = listaPessoas.get(i);
+							}
+						}
+
+						if (destinatario == null && contaDestinatario == null) {
+							throw new Exception("Destinatário não encontrado! Tente novamente.");
 						}
 						continua = false;
+					} catch (InputMismatchException ex) {
+						System.out.println("\nPor favor, digite somente números.");
+						Thread.sleep(2 * 1000);
+						scan.nextLine();
+
 					} catch (Exception erro1) {
 						System.err.println(erro1.getMessage());
 						Thread.sleep(2 * 1000);
 						scan.nextLine();
 					}
 				} while (continua);
-				System.out.print("\nDigite o CPF do titular da conta de destino: ");
-				cpf = scan.next();
-				Conta cl = null;
-				Conta contaDestinatario = null;
-				Pessoa destinatario = null;
-				for (int i = 0; i < listaConta.size(); i++) {
-					cl = listaConta.get(i);
-					if (cl.getCpf().equalsIgnoreCase(cpf)) {
-						contaDestinatario = listaConta.get(i);
-					}
-				}
-				for (int i = 0; i < listaConta.size(); i++) {
-					cl = listaConta.get(i);
-					if (cl.getCpf().equalsIgnoreCase(cpf)) {
-						destinatario = listaPessoas.get(i);
-					}
-				}
 
 				int transferir = 1;
 				do {
-					if (transferir != 1 && transferir != 2) {
-						Uteis.logo();
-						System.out.println("Opção inválida! Tente novamente.");
-					}
-					System.out.println("\nPor favor, confirme os dados: ");
-					System.out.println("\nNome do destinatário: " + destinatario.getNome());
-					System.out.println("CPF do destinatário: " + destinatario.getCpf());
-					System.out.format("Valor da transferência: %.2f", valor);
-					System.out.println();
-					
-					System.out.println("\nDeseja continuar? ");
-					System.out.println("1 - Sim");
-					System.out.println("2 - Não");
-					System.out.print(" Opção: ");
-					transferir = scan.nextInt();
+					continua = true;
+					do {
+						try {
+							if (transferir != 1 && transferir != 2) {
+								Uteis.logo();
+								System.out.println("Opção inválida! Tente novamente.");
+							}
+							System.out.println("\nPor favor, confirme os dados: ");
+							System.out.println("\nNome do destinatário: " + destinatario.getNome());
+							System.out.println("CPF do destinatário: " + destinatario.getCpf());
+							System.out.format("Valor da transferência: %.2f", valor);
+							System.out.println();
+
+							System.out.println("\nDeseja continuar? ");
+							System.out.println("1 - Sim");
+							System.out.println("2 - Não");
+							System.out.print(" Opção: ");
+							transferir = scan.nextInt();
+							continua = false;
+						} catch (InputMismatchException ex) {
+							System.out.println("\nPor favor, digite somente números.");
+							Thread.sleep(2 * 1000);
+							scan.nextLine();
+
+						}
+					} while (continua);
 				} while (transferir != 1 && transferir != 2);
 
 				if (transferir == 1) {
@@ -399,20 +498,31 @@ public class Menus {
 					System.out.println();
 					r = 1;
 					do {
-						if (r != 1 && r != 2) {
-							Uteis.logo();
-							System.out.println("Opção inválida! Tente novamente.");
-						}
-						System.out.println("\nDeseja fazer outra operação? ");
-						System.out.println("1 - Sim");
-						System.out.println("2 - Não");
-						System.out.print(" Opção: ");
-						r = scan.nextInt();
+						continua = true;
+						do {
+							try {
+								if (r != 1 && r != 2) {
+									Uteis.logo();
+									System.out.println("Opção inválida! Tente novamente.");
+								}
+								System.out.println("\nDeseja fazer outra operação? ");
+								System.out.println("1 - Sim");
+								System.out.println("2 - Não");
+								System.out.print(" Opção: ");
+								r = scan.nextInt();
+								continua = false;
+							} catch (InputMismatchException ex) {
+								System.out.println("\nPor favor, digite somente números.");
+								Thread.sleep(2 * 1000);
+								scan.nextLine();
+
+							}
+						} while (continua);
 					} while (r != 1 && r != 2);
 				}
 
 			} else if (op3 == 14) {
-				boolean continua = true;
+				continua = true;
 
 				do {
 					try {
@@ -439,6 +549,11 @@ public class Menus {
 							throw new Exception("Saldo insuficiente para a contratação!");
 						}
 						continua = false;
+					} catch (InputMismatchException ex) {
+						System.out.println("\nPor favor, digite somente números.");
+						Thread.sleep(2 * 1000);
+						scan.nextLine();
+
 					} catch (Exception erro1) {
 						System.err.println(erro1.getMessage());
 						Thread.sleep(2 * 1000);
@@ -449,15 +564,26 @@ public class Menus {
 				System.out.println();
 				r = 1;
 				do {
-					if (r != 1 && r != 2) {
-						Uteis.logo();
-						System.out.println("Opção inválida! Tente novamente.");
-					}
-					System.out.println("\nDeseja fazer outra operação? ");
-					System.out.println("1 - Sim");
-					System.out.println("2 - Não");
-					System.out.print(" Opção: ");
-					r = scan.nextInt();
+					continua = true;
+					do {
+						try {
+							if (r != 1 && r != 2) {
+								Uteis.logo();
+								System.out.println("Opção inválida! Tente novamente.");
+							}
+							System.out.println("\nDeseja fazer outra operação? ");
+							System.out.println("1 - Sim");
+							System.out.println("2 - Não");
+							System.out.print(" Opção: ");
+							r = scan.nextInt();
+							continua = false;
+						} catch (InputMismatchException ex) {
+							System.out.println("\nPor favor, digite somente números.");
+							Thread.sleep(2 * 1000);
+							scan.nextLine();
+
+						}
+					} while (continua);
 				} while (r != 1 && r != 2);
 
 			} else if (op3 == 21) {
@@ -471,15 +597,26 @@ public class Menus {
 				System.out.println();
 				r = 1;
 				do {
-					if (r != 1 && r != 2) {
-						Uteis.logo();
-						System.out.println("Opção inválida! Tente novamente.");
-					}
-					System.out.println("\nDeseja fazer outra operação? ");
-					System.out.println("1 - Sim");
-					System.out.println("2 - Não");
-					System.out.print(" Opção: ");
-					r = scan.nextInt();
+					continua = true;
+					do {
+						try {
+							if (r != 1 && r != 2) {
+								Uteis.logo();
+								System.out.println("Opção inválida! Tente novamente.");
+							}
+							System.out.println("\nDeseja fazer outra operação? ");
+							System.out.println("1 - Sim");
+							System.out.println("2 - Não");
+							System.out.print(" Opção: ");
+							r = scan.nextInt();
+							continua = false;
+						} catch (InputMismatchException ex) {
+							System.out.println("\nPor favor, digite somente números.");
+							Thread.sleep(2 * 1000);
+							scan.nextLine();
+
+						}
+					} while (continua);
 				} while (r != 1 && r != 2);
 
 			} else if (op3 == 22) {
@@ -499,65 +636,116 @@ public class Menus {
 					System.out.println();
 					r = 1;
 					do {
-						if (r != 1 && r != 2) {
-							Uteis.logo();
-							System.out.println("Opção inválida! Tente novamente.");
-						}
-						System.out.println("\nDeseja fazer outra operação? ");
-						System.out.println("1 - Sim");
-						System.out.println("2 - Não");
-						System.out.print(" Opção: ");
-						r = scan.nextInt();
+						continua = true;
+						do {
+							try {
+								if (r != 1 && r != 2) {
+									Uteis.logo();
+									System.out.println("Opção inválida! Tente novamente.");
+								}
+								System.out.println("\nDeseja fazer outra operação? ");
+								System.out.println("1 - Sim");
+								System.out.println("2 - Não");
+								System.out.print(" Opção: ");
+								r = scan.nextInt();
+								continua = false;
+							} catch (InputMismatchException ex) {
+								System.out.println("\nPor favor, digite somente números.");
+								Thread.sleep(2 * 1000);
+								scan.nextLine();
+
+							}
+						} while (continua);
 					} while (r != 1 && r != 2);
 
 				} catch (ClassCastException cce) {
 					System.out.println("Voce não possui conta corrente para realizar esta operação!");
 				}
 			} else if (op3 == 23) {
+				continua = true;
+				do {
+					try {
+						Uteis.logo();
+						System.out.println("------------------------------------------------------------");
+						System.out.println("             Relatório de rendimento da poupança             ");
+						System.out.println("------------------------------------------------------------");
+						if (conta.getTipo().equalsIgnoreCase(ContasEnum.CONTACORRENTE.name())) {
+							throw new ClassCastException();
+						}
+						System.out.println("\nSimulação");
+						System.out.println("0 - Cancelar");
+						System.out.print("\nDigite o valor que deseja simular: ");
+						valor = scan.nextDouble();
+						continua = false;
+					} catch (InputMismatchException ex) {
+						System.out.println("\nPor favor, digite somente números.");
+						Thread.sleep(2 * 1000);
+						scan.nextLine();
+
+					}
+				} while (continua);
+				
+				if (valor == 0) {
+					Uteis.sair();
+					Thread.sleep(3 * 1000);
+					menuGeral(listaPessoas, listaConta);
+				}
+				
+				continua = true;
+				double valorFinal = 0;
+				double rendimento = 0;
+				dias = 0;
+				do {
+					try {
+						System.out.print("Digite a quantidade de dias desejada: ");
+						dias = scan.nextInt();
+						rendimento = ((ContaPoupanca) conta).calcularRendimentoPoupanca(valor, dias);
+						valorFinal = rendimento + valor;
+						continua = false;
+					} catch (InputMismatchException ex) {
+						System.out.println("\nPor favor, digite somente números.");
+						Thread.sleep(2 * 1000);
+						scan.nextLine();
+
+					}
+				} while (continua);	
+
+				// Resposta do submenu relatório de rendimento da poupança
 				try {
 					Uteis.logo();
 					System.out.println("------------------------------------------------------------");
 					System.out.println("             Relatório de rendimento da poupança             ");
 					System.out.println("------------------------------------------------------------");
-					if (conta.getTipo().equalsIgnoreCase(ContasEnum.CONTACORRENTE.name())) {
-						throw new ClassCastException();
-					}
-					System.out.println("\nSimulação");
-					System.out.println("0 - Cancelar");
-					System.out.print("\nDigite o valor que deseja simular: ");
-					valor = scan.nextDouble();
-					if (valor == 0) {
-						Uteis.sair();
-						Thread.sleep(3 * 1000);
-						menuGeral(listaPessoas, listaConta);
-					}
-					System.out.print("Digite a quantidade de dias desejada: ");
-					dias = scan.nextInt();
-					double valorFinal = ((ContaPoupanca) conta).calcularRendimentoPoupanca(valor, dias);
-					double rendimento = valorFinal - valor;
-
-					// Resposta do submenu relatório de rendimento da poupança
-					Uteis.logo();
-					System.out.println("------------------------------------------------------------");
-					System.out.println("             Relatório de rendimento da poupança             ");
-					System.out.println("------------------------------------------------------------");
-					System.out.format("\nO rendimento de R$ %.2f", valor);
+					System.out.format("\nO rendimento de R$ %.2f", valor);//é o que inserimos
 					System.out.print(" durante " + dias + " dias é de ");
-					System.out.format("R$ %.2f", rendimento);
-					System.out.format("\nO valor total é R$ %.2f", valorFinal);
+					System.out.format("R$ %.2f", rendimento);//
+					
+					System.out.format("\nO valor total é R$ %.2f", valorFinal);//valorFinal = rendimento
 					RendimentoPoupanca.pathRendimento(conta, p, valor, dias);
 					System.out.println();
 					r = 1;
+					
 					do {
-						if (r != 1 && r != 2) {
-							Uteis.logo();
-							System.out.println("Opção inválida! Tente novamente.");
-						}
-						System.out.println("\nDeseja fazer outra operação? ");
-						System.out.println("1 - Sim");
-						System.out.println("2 - Não");
-						System.out.print(" Opção: ");
-						r = scan.nextInt();
+						continua = true;
+						do {
+							try {
+								if (r != 1 && r != 2) {
+									Uteis.logo();
+									System.out.println("Opção inválida! Tente novamente.");
+								}
+								System.out.println("\nDeseja fazer outra operação? ");
+								System.out.println("1 - Sim");
+								System.out.println("2 - Não");
+								System.out.print(" Opção: ");
+								r = scan.nextInt();
+								continua = false;
+							} catch (InputMismatchException ex) {
+								System.out.println("\nPor favor, digite somente números.");
+								Thread.sleep(2 * 1000);
+								scan.nextLine();
+
+							}
+						} while (continua);
 					} while (r != 1 && r != 2);
 
 				} catch (ClassCastException cce) {
@@ -576,21 +764,34 @@ public class Menus {
 				System.out.println();
 				r = 1;
 				do {
-					if (r != 1 && r != 2) {
-						Uteis.logo();
-						System.out.println("Opção inválida! Tente novamente.");
-					}
-					System.out.println("\nDeseja fazer outra operação? ");
-					System.out.println("1 - Sim");
-					System.out.println("2 - Não");
-					System.out.print(" Opção: ");
-					r = scan.nextInt();
+					continua = true;
+					do {
+						try {
+							if (r != 1 && r != 2) {
+								Uteis.logo();
+								System.out.println("Opção inválida! Tente novamente.");
+							}
+							System.out.println("\nDeseja fazer outra operação? ");
+							System.out.println("1 - Sim");
+							System.out.println("2 - Não");
+							System.out.print(" Opção: ");
+							r = scan.nextInt();
+							continua = false;
+						} catch (InputMismatchException ex) {
+							System.out.println("\nPor favor, digite somente números.");
+							Thread.sleep(2 * 1000);
+							scan.nextLine();
+
+						}
+					} while (continua);
 				} while (r != 1 && r != 2);
 
 			}
 		} while (r != 2);
 
-		if (r == 2) {
+		if (r == 2)
+
+		{
 			Uteis.sair();
 			Thread.sleep(3 * 1000);
 			menuGeral(listaPessoas, listaConta);
@@ -613,15 +814,26 @@ public class Menus {
 		System.out.println();
 		r = 1;
 		do {
-			if (r != 1 && r != 2) {
-				Uteis.logo();
-				System.out.println("Opção inválida! Tente novamente.");
-			}
-			System.out.println("\nGostaria de mudar para a interface cliente? ");
-			System.out.println("1 - Sim");
-			System.out.println("2 - Não");
-			System.out.print(" Opção: ");
-			r = scan.nextInt();
+			boolean continua = true;
+			do {
+				try {
+					if (r != 1 && r != 2) {
+						Uteis.logo();
+						System.out.println("Opção inválida! Tente novamente.");
+					}
+					System.out.println("\nGostaria de mudar para a interface cliente? ");
+					System.out.println("1 - Sim");
+					System.out.println("2 - Não");
+					System.out.print(" Opção: ");
+					r = scan.nextInt();
+					continua = false;
+				} catch (InputMismatchException ex) {
+					System.out.println("\nPor favor, digite somente números.");
+					Thread.sleep(2 * 1000);
+					scan.nextLine();
+
+				}
+			} while (continua);
 		} while (r != 1 && r != 2);
 
 		if (r == 1) {
@@ -646,15 +858,26 @@ public class Menus {
 		System.out.println();
 		r = 1;
 		do {
-			if (r != 1 && r != 2) {
-				Uteis.logo();
-				System.out.println("Opção inválida! Tente novamente.");
-			}
-			System.out.println("\nGostaria de mudar para a interface cliente? ");
-			System.out.println("1 - Sim");
-			System.out.println("2 - Não");
-			System.out.print(" Opção: ");
-			r = scan.nextInt();
+			boolean continua = true;
+			do {
+				try {
+					if (r != 1 && r != 2) {
+						Uteis.logo();
+						System.out.println("Opção inválida! Tente novamente.");
+					}
+					System.out.println("\nGostaria de mudar para a interface cliente? ");
+					System.out.println("1 - Sim");
+					System.out.println("2 - Não");
+					System.out.print(" Opção: ");
+					r = scan.nextInt();
+					continua = false;
+				} catch (InputMismatchException ex) {
+					System.out.println("\nPor favor, digite somente números.");
+					Thread.sleep(2 * 1000);
+					scan.nextLine();
+
+				}
+			} while (continua);
 		} while (r != 1 && r != 2);
 
 		if (r == 1) {
@@ -680,15 +903,26 @@ public class Menus {
 		System.out.println();
 		r = 1;
 		do {
-			if (r != 1 && r != 2) {
-				Uteis.logo();
-				System.out.println("Opção inválida! Tente novamente.");
-			}
-			System.out.println("\nGostaria de mudar para a interface cliente? ");
-			System.out.println("1 - Sim");
-			System.out.println("2 - Não");
-			System.out.print(" Opção: ");
-			r = scan.nextInt();
+			boolean continua = true;
+			do {
+				try {
+					if (r != 1 && r != 2) {
+						Uteis.logo();
+						System.out.println("Opção inválida! Tente novamente.");
+					}
+					System.out.println("\nGostaria de mudar para a interface cliente? ");
+					System.out.println("1 - Sim");
+					System.out.println("2 - Não");
+					System.out.print(" Opção: ");
+					r = scan.nextInt();
+					continua = false;
+				} catch (InputMismatchException ex) {
+					System.out.println("\nPor favor, digite somente números.");
+					Thread.sleep(2 * 1000);
+					scan.nextLine();
+
+				}
+			} while (continua);
 		} while (r != 1 && r != 2);
 
 		if (r == 1) {
