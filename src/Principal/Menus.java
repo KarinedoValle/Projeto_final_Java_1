@@ -362,15 +362,16 @@ public class Menus {
 
 				int transferir = 1;
 				do {
+					if (transferir != 1 && transferir != 2) {
+						Uteis.logo();
+						System.out.println("Opção inválida! Tente novamente.");
+					}
 					System.out.println("\nPor favor, confirme os dados: ");
 					System.out.println("\nNome do destinatário: " + destinatario.getNome());
 					System.out.println("CPF do destinatário: " + destinatario.getCpf());
 					System.out.format("Valor da transferência: %.2f", valor);
 					System.out.println();
-					if (transferir != 1 && transferir != 2) {
-						Uteis.logo();
-						System.out.println("Opção inválida! Tente novamente.");
-					}
+					
 					System.out.println("\nDeseja continuar? ");
 					System.out.println("1 - Sim");
 					System.out.println("2 - Não");
