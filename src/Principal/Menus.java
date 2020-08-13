@@ -1,12 +1,9 @@
 package Principal;
 
-import java.io.IOException;
-import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
 import conta.Conta;
-import conta.ContaCorrente;
 import conta.ContaPoupanca;
 import conta.Tributos;
 import enums.ContasEnum;
@@ -350,17 +347,39 @@ public class Menus {
 				r = scan.nextInt();
 
 			} else if (op3 == 14) {
-				Uteis.logo();
-				System.out.println("------------------------------------------------------------");
-				System.out.println("                  Contratar seguro de vida                  ");
-				System.out.println("------------------------------------------------------------");
-				System.out.println("0 - Cancelar");
-				System.out.print("Digite o valor que será segurado: ");
-				valor = scan.nextDouble();
-				if (valor == 0) {
-					menuGeral(listaPessoas, listaConta);
-				}
-				System.out.format("\nO valor segurado é: %.2f", conta.contratarSeguro(valor));
+				boolean continua = true;
+
+				do {
+					try {
+						Uteis.logo();
+						System.out.println("------------------------------------------------------------");
+						System.out.println("                  Contratar seguro de vida                  ");
+						System.out.println("------------------------------------------------------------");
+						System.out.println("0 - Cancelar");
+						System.out.print("Digite o valor que será segurado: ");
+						valor = scan.nextDouble();
+						if (valor == 0) {
+							menuGeral(listaPessoas, listaConta);
+						}
+						if (valor < 0) {
+							throw new Exception("Não é possível contratar com valores negativos.");
+						}
+						if ((conta.calculoTributoSeguroDeVida(valor)) < conta.getSaldo()) {
+							System.out.format("\nO valor segurado é: %.2f", conta.contratarSeguro(valor));
+						}
+			
+						if ((conta.calculoTributoSeguroDeVida(valor)) > conta.getSaldo()) {
+							throw new Exception("Saldo insuficiente para a contratação!");
+						}
+						continua = false;
+					} catch (Exception erro1) {
+						System.err.println(erro1.getMessage());
+						Thread.sleep(3 * 1000);
+						scan.nextLine();
+					}
+				} while (continua);
+				
+				
 				System.out.println("\n\nDeseja fazer outra operação? ");
 				System.out.println("1 - Sim");
 				System.out.println("2 - Não");

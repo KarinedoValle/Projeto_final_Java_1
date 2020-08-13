@@ -3,9 +3,7 @@ package criacaoDeDados;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import conta.Conta;
 import conta.ContaCorrente;
@@ -14,7 +12,6 @@ import enums.ContasEnum;
 import enums.PessoasEnum;
 import pessoal.Cliente;
 import pessoal.Diretor;
-import pessoal.Funcionario;
 import pessoal.Gerente;
 import pessoal.Pessoa;
 import pessoal.Presidente;
@@ -32,7 +29,6 @@ public class EjetarDados {
 
 			linha = buffRead.readLine();
 
-			Funcionario funcionario = null;
 			if (linha != null) {
 				String [] split = linha.split(",");
 
@@ -76,7 +72,6 @@ public class EjetarDados {
 
 			linha = buffRead.readLine();
 
-			Funcionario funcionario = null;
 			if (linha != null) {
 				String [] split = linha.split(",");
 

@@ -1,11 +1,5 @@
 package pessoal;
 
-import java.util.Scanner;
-
-import conta.Conta;
-import conta.ContaCorrente;
-import conta.ContaPoupanca;
-
 public class Gerente extends Funcionario{
 	
 	private int agencia;

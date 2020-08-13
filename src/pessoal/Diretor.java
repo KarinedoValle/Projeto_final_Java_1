@@ -1,11 +1,5 @@
 package pessoal;
 
-import java.util.Scanner;
-
-import conta.Conta;
-import conta.ContaCorrente;
-import conta.ContaPoupanca;
-
 public class Diretor extends Funcionario {
 
 	public Diretor() {
