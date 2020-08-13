@@ -16,9 +16,8 @@ public class RelatorioPresidente {
 	public static Double totalDeCapital(Conta conta, Pessoa pessoa, List<Conta> listaConta) throws IOException {
 		double capitalTotal = 0;
 		for (int i = 0; i < listaConta.size(); i++) {
-			capitalTotal += listaConta.get(i).getSaldo();
+			capitalTotal += listaConta.get(i).getSaldo() + listaConta.get(i).getTotalTributos();
 		}
-		capitalTotal += Conta.getTotalTributosBanco(); 
 		pathCapital(conta, pessoa, capitalTotal);
 		return capitalTotal;
 	}

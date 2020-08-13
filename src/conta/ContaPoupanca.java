@@ -2,28 +2,18 @@ package conta;
 
 public class ContaPoupanca extends Conta{
 	
-	private String TipoConta;
 	private double valorRendimento;
 
 	public ContaPoupanca(String cpf, double saldo, int agencia, String tipoConta) {
-		super(cpf, saldo, agencia);
-		TipoConta = tipoConta;
+		super(cpf, saldo, agencia, tipoConta);
 	}
 
 	public ContaPoupanca() {
 		super();
 	}
 	
-	public String getTipoConta() {
-		return TipoConta;
-	}
-
-	public void setTipoConta(String tipoConta) {
-		TipoConta = tipoConta;
-	}
 	
-	
-	
+	//Getters and Setters
 	public double getValorRendimento() {
 		return valorRendimento;
 	}

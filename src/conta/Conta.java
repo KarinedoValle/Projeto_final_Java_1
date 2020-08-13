@@ -2,35 +2,36 @@ package conta;
 
 import java.text.DecimalFormat;
 
-public abstract class Conta implements Tributos{
+public abstract class Conta implements Tributos {
 
 	private String cpf;
 	private double saldo;
 	private int agencia;
+	private String tipo;
 	private double totalTributos = 0.0;
-	static double totalTributosBanco = 0.0;
 	private double vSeguro = 0;
-	static int totalAgencia1 =0;
+	static int totalAgencia1 = 0;
 	static int totalAgencia2 = 0;
 
-	public Conta(String cpf, double saldo, int agencia) {
-		super();
-		this.cpf = cpf;
-		this.saldo = saldo;
-		this.agencia = agencia;
-		if(agencia == 001) {
-			totalAgencia1++;
-		} else if(agencia == 002) {
-			totalAgencia2++;
-		}
-	}
-
-
-
+	// Construtores
 	public Conta() {
 		super();
 	}
 
+	public Conta(String cpf, double saldo, int agencia, String tipo) {
+		super();
+		this.cpf = cpf;
+		this.saldo = saldo;
+		this.agencia = agencia;
+		this.tipo = tipo;
+		if (agencia == 001) {
+			totalAgencia1++;
+		} else if (agencia == 002) {
+			totalAgencia2++;
+		}
+	}
+
+	// Getters and Setters
 	public String getCpf() {
 		return cpf;
 	}
@@ -53,15 +54,13 @@ public abstract class Conta implements Tributos{
 
 	public void setAgencia(int agencia) {
 		this.agencia = agencia;
-		if(agencia == 001) {
+		if (agencia == 001) {
 			totalAgencia1++;
-		} else if(agencia == 002) {
+		} else if (agencia == 002) {
 			totalAgencia2++;
 		}
 	}
-	
 
-	
 	public double getTotalTributos() {
 		return totalTributos;
 	}
@@ -70,7 +69,6 @@ public abstract class Conta implements Tributos{
 		this.totalTributos = totalTributos;
 	}
 
-
 	public double getvSeguro() {
 		return vSeguro;
 	}
@@ -78,8 +76,6 @@ public abstract class Conta implements Tributos{
 	public void setvSeguro(double vSeguro) {
 		this.vSeguro = vSeguro;
 	}
-	
-	
 
 	public static int getTotalAgencia1() {
 		return totalAgencia1;
@@ -88,18 +84,17 @@ public abstract class Conta implements Tributos{
 	public static int getTotalAgencia2() {
 		return totalAgencia2;
 	}
-	
-	public static double getTotalTributosBanco() {
-		return totalTributosBanco;
-	}
-	
-	public static void setTotalTributosBanco(double totalTributosBanco) {
-		Conta.totalTributosBanco = totalTributosBanco;
+
+
+	public String getTipo() {
+		return tipo;
 	}
 
-	
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
 
-	// operacoes
+	// Operações
 	public String sacar(double valor) {
 		if (this.saldo > valor) {
 			double novoSaldo = this.getSaldo() - valor;
@@ -127,14 +122,14 @@ public abstract class Conta implements Tributos{
 	}
 
 	public double contratarSeguro(double valor) {
-        double valorSegurado = valor - calculoTributoSeguroDeVida(valor);
-        this.vSeguro += calculoTributoSeguroDeVida(valor);
-        double totalTributosGeral =  getTotalTributos() + calculoTributoSeguroDeVida(valor);
-        setTotalTributosBanco(totalTributosGeral);
-        return valorSegurado;
-    }
-	
-	 public double calculoTributoSeguroDeVida(double valor) {
-	        return valor * porcentagemSeguroDeVida;
-	    }
+		double valorSegurado = valor - this.calculoTributoSeguroDeVida(valor);
+		this.vSeguro += this.calculoTributoSeguroDeVida(valor);
+		double total = this.getTotalTributos() + transferencia;
+		this.setTotalTributos(total);
+		return valorSegurado;
+	}
+
+	public double calculoTributoSeguroDeVida(double valor) {
+		return valor * porcentagemSeguroDeVida;
+	}
 }

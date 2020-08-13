@@ -9,6 +9,7 @@ import conta.Conta;
 import conta.ContaCorrente;
 import conta.ContaPoupanca;
 import conta.Tributos;
+import enums.ContasEnum;
 import enums.PessoasEnum;
 import pessoal.Pessoa;
 import relatorios.RelDeposito;
@@ -72,6 +73,11 @@ public class Menus {
 					menuFuncionario(p, c, listaPessoas, listaConta);
 				}
 				continua = false;
+				if(p.getSenha() != senha) {
+					continua = true;
+					System.out.println("Senha incorreta! Tente novamente.");
+					Thread.sleep(2 * 1000);
+				}
 			} catch (NullPointerException ex) {
 				System.out.println("\nCPF não cadastrado.");
 				Thread.sleep(2 * 1000);
@@ -206,6 +212,10 @@ public class Menus {
 						if (valor == 0) {
 							menuGeral(listaPessoas, listaConta);
 						}
+						if ((valor + Tributos.saque) > conta.getSaldo()) {
+							throw new Exception(conta.sacar(valor));
+						}
+						
 						if (valor < 0) {
 							throw new Exception("Não é possível sacar valores negativos.");
 						}
@@ -294,6 +304,10 @@ public class Menus {
 						if (valor == 0) {
 							menuGeral(listaPessoas, listaConta);
 						}
+						if ((valor + Tributos.transferencia) > conta.getSaldo()) {
+							throw new Exception(conta.transferir(valor, conta));
+						}
+						
 						if (valor < 0) {
 							throw new Exception("Não é possível depositar valores negativos.");
 						}
@@ -394,6 +408,9 @@ public class Menus {
 					System.out.println("------------------------------------------------------------");
 					System.out.println("             Relatório de rendimento da poupança             ");
 					System.out.println("------------------------------------------------------------");
+					if (conta.getTipo().equalsIgnoreCase(ContasEnum.CONTACORRENTE.name())) {
+						throw new ClassCastException();
+					}
 					System.out.println("\nSimulação");
 					System.out.println("0 - Cancelar");
 					System.out.print("\nDigite o valor que deseja simular: ");
