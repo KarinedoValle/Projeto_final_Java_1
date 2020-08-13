@@ -21,5 +21,11 @@ public class Uteis {
 		
 	}
 	
-
+	public final static void sair() {
+		logo();
+		System.out.println("------------------------------------------------------------");
+		System.out.println("                           Saindo                           ");
+		System.out.println("------------------------------------------------------------");
+		System.out.println("Obrigado por escolher o Hero Bank! Tenha um ótimo dia!");
+	}
 }

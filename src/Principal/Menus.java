@@ -1,5 +1,6 @@
 package Principal;
 
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -56,6 +57,9 @@ public class Menus {
 					}
 				}
 
+				System.out.println("\nOlá, " + p.getNome() + "!");
+				Thread.sleep(2 * 1000);
+
 				if (p.getCpf().equalsIgnoreCase(cpf) && p.getSenha() == senha
 						&& p.getTipo().equalsIgnoreCase(PessoasEnum.CLIENTE.name())) {
 					menuCliente(listaPessoas, p, c, listaConta);
@@ -70,7 +74,7 @@ public class Menus {
 					menuFuncionario(p, c, listaPessoas, listaConta);
 				}
 				continua = false;
-				if(p.getSenha() != senha) {
+				if (p.getSenha() != senha) {
 					continua = true;
 					System.out.println("Senha incorreta! Tente novamente.");
 					Thread.sleep(2 * 1000);
@@ -90,7 +94,6 @@ public class Menus {
 		System.out.println("------------------------------------------------------------");
 		System.out.println("                 Bem-vindo(a) ao Hero Bank!                  ");
 		System.out.println("------------------------------------------------------------");
-		System.out.println("Olá, " + p.getNome());
 		System.out.println("Gostaria de logar como:");
 		System.out.println("1 - Cliente");
 		System.out.println("2 - Funcionário");
@@ -130,6 +133,8 @@ public class Menus {
 				System.out.print(" Opção: ");
 				op1 = scan.nextInt();
 				if (op1 == 3) {
+					Uteis.sair();
+					Thread.sleep(3 * 1000);
 					menuGeral(listaPessoas, listaConta);
 				}
 			} while (op1 != 1 && op1 != 2);
@@ -205,22 +210,24 @@ public class Menus {
 						System.out.println("                            Saque                            ");
 						System.out.println("------------------------------------------------------------");
 						System.out.println("0 - Cancelar");
-						System.out.print("Digite o valor que deseja sacar: ");
+						System.out.print("\nDigite o valor que deseja sacar: ");
 						valor = scan.nextDouble();
 						if (valor == 0) {
+							Uteis.sair();
+							Thread.sleep(3 * 1000);
 							menuGeral(listaPessoas, listaConta);
 						}
 						if ((valor + Tributos.saque) > conta.getSaldo()) {
 							throw new Exception(conta.sacar(valor));
 						}
-						
+
 						if (valor < 0) {
 							throw new Exception("Não é possível sacar valores negativos.");
 						}
 						continua = false;
 					} catch (Exception erro1) {
 						System.err.println(erro1.getMessage());
-						Thread.sleep(3 * 1000);
+						Thread.sleep(2 * 1000);
 						scan.nextLine();
 					}
 				} while (continua);
@@ -228,22 +235,29 @@ public class Menus {
 				double saldoAnterior = conta.getSaldo();
 				conta.sacar(valor);
 				double novoSaldo = conta.getSaldo();
-				
-				//Resposta do submenu de saque
+
+				// Resposta do submenu de saque
 				Uteis.logo();
 				System.out.println("------------------------------------------------------------");
 				System.out.println("                            Saque                            ");
 				System.out.println("------------------------------------------------------------");
-				System.out.format("\nSaldo anterior: %.2f", saldoAnterior); 
-				System.out.format("\nValor sacado: %.2f", valor); 
+				System.out.format("\nSaldo anterior: %.2f", saldoAnterior);
+				System.out.format("\nValor sacado: %.2f", valor);
 				System.out.format("\nSaldo atual: %.2f", novoSaldo);
 				RelSaque.pathSaque(conta, p, valor);
-
-				System.out.println("\n\nDeseja fazer outra operação? ");
-				System.out.println("1 - Sim");
-				System.out.println("2 - Não");
-				System.out.print(" Opção: ");
-				r = scan.nextInt();
+				System.out.println();
+				r = 1;
+				do {
+					if (r != 1 && r != 2) {
+						Uteis.logo();
+						System.out.println("Opção inválida! Tente novamente.");
+					}
+					System.out.println("\nDeseja fazer outra operação? ");
+					System.out.println("1 - Sim");
+					System.out.println("2 - Não");
+					System.out.print(" Opção: ");
+					r = scan.nextInt();
+				} while (r != 1 && r != 2);
 
 			} else if (op3 == 12) {
 				boolean continua = true;
@@ -254,9 +268,11 @@ public class Menus {
 						System.out.println("                          Depósito                          ");
 						System.out.println("------------------------------------------------------------");
 						System.out.println("0 - Cancelar");
-						System.out.print("Digite o valor que deseja depositar: ");
+						System.out.print("\nDigite o valor que deseja depositar: ");
 						valor = scan.nextDouble();
 						if (valor == 0) {
+							Uteis.sair();
+							Thread.sleep(3 * 1000);
 							menuGeral(listaPessoas, listaConta);
 						}
 						if (valor < 0) {
@@ -265,28 +281,36 @@ public class Menus {
 						continua = false;
 					} catch (Exception erro1) {
 						System.err.println(erro1.getMessage());
-						Thread.sleep(3 * 1000);
+						Thread.sleep(2 * 1000);
 						scan.nextLine();
 					}
 				} while (continua);
 				double saldoAnterior = conta.getSaldo();
 				conta.depositar(valor);
 				double novoSaldo = conta.getSaldo();
-				
-				//Resposta do submenu de depósito
+
+				// Resposta do submenu de depósito
 				Uteis.logo();
 				System.out.println("------------------------------------------------------------");
 				System.out.println("                          Depósito                          ");
 				System.out.println("------------------------------------------------------------");
-				System.out.format("\nSaldo anterior: %.2f", saldoAnterior); 
-				System.out.format("\nValor depositado: %.2f", valor); 
+				System.out.format("\nSaldo anterior: %.2f", saldoAnterior);
+				System.out.format("\nValor depositado: %.2f", valor);
 				System.out.format("\nSaldo atual: %.2f", novoSaldo);
 				RelDeposito.pathDeposito(conta, valor, p);
-				System.out.println("\n\nDeseja fazer outra operação? ");
-				System.out.println("1 - Sim");
-				System.out.println("2 - Não");
-				System.out.print(" Opção: ");
-				r = scan.nextInt();
+				System.out.println();
+				r = 1;
+				do {
+					if (r != 1 && r != 2) {
+						Uteis.logo();
+						System.out.println("Opção inválida! Tente novamente.");
+					}
+					System.out.println("\nDeseja fazer outra operação? ");
+					System.out.println("1 - Sim");
+					System.out.println("2 - Não");
+					System.out.print(" Opção: ");
+					r = scan.nextInt();
+				} while (r != 1 && r != 2);
 
 			} else if (op3 == 13) {
 				boolean continua = true;
@@ -297,54 +321,94 @@ public class Menus {
 						System.out.println("                        Transferência                        ");
 						System.out.println("------------------------------------------------------------");
 						System.out.println("0 - Cancelar");
-						System.out.print("Digite o valor que deseja transferir: ");
+						System.out.print("\nDigite o valor que deseja transferir: ");
 						valor = scan.nextDouble();
 						if (valor == 0) {
+							Uteis.sair();
+							Thread.sleep(3 * 1000);
 							menuGeral(listaPessoas, listaConta);
 						}
 						if ((valor + Tributos.transferencia) > conta.getSaldo()) {
 							throw new Exception(conta.transferir(valor, conta));
 						}
-						
+
 						if (valor < 0) {
 							throw new Exception("Não é possível depositar valores negativos.");
 						}
 						continua = false;
 					} catch (Exception erro1) {
 						System.err.println(erro1.getMessage());
-						Thread.sleep(3 * 1000);
+						Thread.sleep(2 * 1000);
 						scan.nextLine();
 					}
 				} while (continua);
 				System.out.print("\nDigite o CPF do titular da conta de destino: ");
 				cpf = scan.next();
 				Conta cl = null;
-				Conta destinatario = null;
+				Conta contaDestinatario = null;
+				Pessoa destinatario = null;
 				for (int i = 0; i < listaConta.size(); i++) {
 					cl = listaConta.get(i);
 					if (cl.getCpf().equalsIgnoreCase(cpf)) {
-						destinatario = listaConta.get(i);
+						contaDestinatario = listaConta.get(i);
 					}
 				}
-				double saldoAnterior = conta.getSaldo();
-				conta.transferir(valor, destinatario);
-				double novoSaldo = conta.getSaldo();
-				
-				//Resposta do submenu de transferência
-				Uteis.logo();
-				System.out.println("------------------------------------------------------------");
-				System.out.println("                        Transferência                        ");
-				System.out.println("------------------------------------------------------------");
-				System.out.format("\nSaldo anterior: %.2f", saldoAnterior); 
-				System.out.format("\nValor transferido: %.2f", valor); 
-				System.out.format("\nSaldo atual: %.2f", novoSaldo);
-				
-				RelTransferencia.pathTransferencia(conta, valor, p, cpf);
-				System.out.println("\n\nDeseja fazer outra operação? ");
-				System.out.println("1 - Sim");
-				System.out.println("2 - Não");
-				System.out.print(" Opção: ");
-				r = scan.nextInt();
+				for (int i = 0; i < listaConta.size(); i++) {
+					cl = listaConta.get(i);
+					if (cl.getCpf().equalsIgnoreCase(cpf)) {
+						destinatario = listaPessoas.get(i);
+					}
+				}
+
+				int transferir = 1;
+				do {
+					System.out.println("\nPor favor, confirme os dados: ");
+					System.out.println("\nNome do destinatário: " + destinatario.getNome());
+					System.out.println("CPF do destinatário: " + destinatario.getCpf());
+					System.out.format("Valor da transferência: %.2f", valor);
+					System.out.println();
+					if (transferir != 1 && transferir != 2) {
+						Uteis.logo();
+						System.out.println("Opção inválida! Tente novamente.");
+					}
+					System.out.println("\nDeseja continuar? ");
+					System.out.println("1 - Sim");
+					System.out.println("2 - Não");
+					System.out.print(" Opção: ");
+					transferir = scan.nextInt();
+				} while (transferir != 1 && transferir != 2);
+
+				if (transferir == 1) {
+					double saldoAnterior = conta.getSaldo();
+					conta.transferir(valor, contaDestinatario);
+					double novoSaldo = conta.getSaldo();
+
+					// Resposta do submenu de transferência
+					Uteis.logo();
+					System.out.println("------------------------------------------------------------");
+					System.out.println("                        Transferência                        ");
+					System.out.println("------------------------------------------------------------");
+					System.out.format("\nSaldo anterior: %.2f", saldoAnterior);
+					System.out.format("\nValor transferido: %.2f", valor);
+					System.out.println("\nNome do destinatário: " + destinatario.getNome());
+					System.out.println("CPF do destinatário: " + destinatario.getCpf());
+					System.out.format("\n\nSaldo atual: %.2f", novoSaldo);
+
+					RelTransferencia.pathTransferencia(conta, valor, p, destinatario);
+					System.out.println();
+					r = 1;
+					do {
+						if (r != 1 && r != 2) {
+							Uteis.logo();
+							System.out.println("Opção inválida! Tente novamente.");
+						}
+						System.out.println("\nDeseja fazer outra operação? ");
+						System.out.println("1 - Sim");
+						System.out.println("2 - Não");
+						System.out.print(" Opção: ");
+						r = scan.nextInt();
+					} while (r != 1 && r != 2);
+				}
 
 			} else if (op3 == 14) {
 				boolean continua = true;
@@ -356,9 +420,11 @@ public class Menus {
 						System.out.println("                  Contratar seguro de vida                  ");
 						System.out.println("------------------------------------------------------------");
 						System.out.println("0 - Cancelar");
-						System.out.print("Digite o valor que será segurado: ");
+						System.out.print("\nDigite o valor que será segurado: ");
 						valor = scan.nextDouble();
 						if (valor == 0) {
+							Uteis.sair();
+							Thread.sleep(3 * 1000);
 							menuGeral(listaPessoas, listaConta);
 						}
 						if (valor < 0) {
@@ -367,24 +433,31 @@ public class Menus {
 						if ((conta.calculoTributoSeguroDeVida(valor)) < conta.getSaldo()) {
 							System.out.format("\nO valor segurado é: %.2f", conta.contratarSeguro(valor));
 						}
-			
+
 						if ((conta.calculoTributoSeguroDeVida(valor)) > conta.getSaldo()) {
 							throw new Exception("Saldo insuficiente para a contratação!");
 						}
 						continua = false;
 					} catch (Exception erro1) {
 						System.err.println(erro1.getMessage());
-						Thread.sleep(3 * 1000);
+						Thread.sleep(2 * 1000);
 						scan.nextLine();
 					}
 				} while (continua);
-				
-				
-				System.out.println("\n\nDeseja fazer outra operação? ");
-				System.out.println("1 - Sim");
-				System.out.println("2 - Não");
-				System.out.print(" Opção: ");
-				r = scan.nextInt();
+
+				System.out.println();
+				r = 1;
+				do {
+					if (r != 1 && r != 2) {
+						Uteis.logo();
+						System.out.println("Opção inválida! Tente novamente.");
+					}
+					System.out.println("\nDeseja fazer outra operação? ");
+					System.out.println("1 - Sim");
+					System.out.println("2 - Não");
+					System.out.print(" Opção: ");
+					r = scan.nextInt();
+				} while (r != 1 && r != 2);
 
 			} else if (op3 == 21) {
 				Uteis.logo();
@@ -394,11 +467,19 @@ public class Menus {
 				System.out.format("\nSaldo atual de: R$ %.2f", conta.getSaldo());
 				Saldo.pathsaldo(p, conta);
 
-				System.out.println("\n\nDeseja fazer outra operação? ");
-				System.out.println("1 - Sim");
-				System.out.println("2 - Não");
-				System.out.print(" Opção: ");
-				r = scan.nextInt();
+				System.out.println();
+				r = 1;
+				do {
+					if (r != 1 && r != 2) {
+						Uteis.logo();
+						System.out.println("Opção inválida! Tente novamente.");
+					}
+					System.out.println("\nDeseja fazer outra operação? ");
+					System.out.println("1 - Sim");
+					System.out.println("2 - Não");
+					System.out.print(" Opção: ");
+					r = scan.nextInt();
+				} while (r != 1 && r != 2);
 
 			} else if (op3 == 22) {
 				try {
@@ -410,14 +491,23 @@ public class Menus {
 					System.out.format("\n- Tributacão para saque: R$ %.2f", Tributos.saque);
 					System.out.format("\n- Tributacão para depósito: R$ %.2f", Tributos.deposito);
 					System.out.format("\n- Tributacão para transferência: R$ %.2f", Tributos.transferencia);
-					System.out.format("\n- Tributacão para seguro de vida em porcentagem: %.2f", Tributos.transferencia);
+					System.out.format("\n- Tributacão para seguro de vida em porcentagem: %.2f",
+							Tributos.transferencia);
 					System.out.format("\n\nGasto total da tributação: %.2f", conta.getTotalTributos());
 					TributacaoCC.pathTributacao(p, conta);
-					System.out.println("\n\nDeseja fazer outra operação? ");
-					System.out.println("1 - Sim");
-					System.out.println("2 - Não");
-					System.out.print(" Opção: ");
-					r = scan.nextInt();
+					System.out.println();
+					r = 1;
+					do {
+						if (r != 1 && r != 2) {
+							Uteis.logo();
+							System.out.println("Opção inválida! Tente novamente.");
+						}
+						System.out.println("\nDeseja fazer outra operação? ");
+						System.out.println("1 - Sim");
+						System.out.println("2 - Não");
+						System.out.print(" Opção: ");
+						r = scan.nextInt();
+					} while (r != 1 && r != 2);
 
 				} catch (ClassCastException cce) {
 					System.out.println("Voce não possui conta corrente para realizar esta operação!");
@@ -436,28 +526,38 @@ public class Menus {
 					System.out.print("\nDigite o valor que deseja simular: ");
 					valor = scan.nextDouble();
 					if (valor == 0) {
+						Uteis.sair();
+						Thread.sleep(3 * 1000);
 						menuGeral(listaPessoas, listaConta);
 					}
 					System.out.print("Digite a quantidade de dias desejada: ");
 					dias = scan.nextInt();
 					double valorFinal = ((ContaPoupanca) conta).calcularRendimentoPoupanca(valor, dias);
 					double rendimento = valorFinal - valor;
-					
-					//Resposta do submenu relatório de rendimento da poupança
+
+					// Resposta do submenu relatório de rendimento da poupança
 					Uteis.logo();
 					System.out.println("------------------------------------------------------------");
 					System.out.println("             Relatório de rendimento da poupança             ");
-					System.out.println("------------------------------------------------------------"); 
+					System.out.println("------------------------------------------------------------");
 					System.out.format("\nO rendimento de R$ %.2f", valor);
 					System.out.print(" durante " + dias + " dias é de ");
 					System.out.format("R$ %.2f", rendimento);
 					System.out.format("\nO valor total é R$ %.2f", valorFinal);
 					RendimentoPoupanca.pathRendimento(conta, p, valor, dias);
-					System.out.println("\n\nDeseja fazer outra operação? ");
-					System.out.println("1 - Sim");
-					System.out.println("2 - Não");
-					System.out.print(" Opção: ");
-					r = scan.nextInt();
+					System.out.println();
+					r = 1;
+					do {
+						if (r != 1 && r != 2) {
+							Uteis.logo();
+							System.out.println("Opção inválida! Tente novamente.");
+						}
+						System.out.println("\nDeseja fazer outra operação? ");
+						System.out.println("1 - Sim");
+						System.out.println("2 - Não");
+						System.out.print(" Opção: ");
+						r = scan.nextInt();
+					} while (r != 1 && r != 2);
 
 				} catch (ClassCastException cce) {
 					System.out.println("Você não possui conta poupança para realizar esta operação!");
@@ -468,19 +568,30 @@ public class Menus {
 				System.out.println("------------------------------------------------------------");
 				System.out.println("        Relatorio de tributação do seguro de vida           ");
 				System.out.println("------------------------------------------------------------");
-				System.out.format("\nTributação do seguro de vida em porcentagem: %.2f", Tributos.porcentagemSeguroDeVida);
+				System.out.format("\nTributação do seguro de vida em porcentagem: %.2f",
+						Tributos.porcentagemSeguroDeVida);
 				System.out.format("\n\nGasto com a tributação do seguro de vida: R$ %.2f", conta.getvSeguro());
 				TributoSeguroDeVida.pathSeguro(conta, p);
-				System.out.println("\n\nDeseja fazer outra operação? ");
-				System.out.println("1 - Sim");
-				System.out.println("2 - Não");
-				System.out.print(" Opção: ");
-				r = scan.nextInt();
+				System.out.println();
+				r = 1;
+				do {
+					if (r != 1 && r != 2) {
+						Uteis.logo();
+						System.out.println("Opção inválida! Tente novamente.");
+					}
+					System.out.println("\nDeseja fazer outra operação? ");
+					System.out.println("1 - Sim");
+					System.out.println("2 - Não");
+					System.out.print(" Opção: ");
+					r = scan.nextInt();
+				} while (r != 1 && r != 2);
 
 			}
 		} while (r != 2);
 
 		if (r == 2) {
+			Uteis.sair();
+			Thread.sleep(3 * 1000);
 			menuGeral(listaPessoas, listaConta);
 		}
 
@@ -499,11 +610,18 @@ public class Menus {
 				.println("Total de contas de sua agência: " + RelatorioGerente.totalDeContasSupervisionadas(conta, p));
 
 		System.out.println();
-		System.out.println("\nGostaria de mudar para a interface cliente? ");
-		System.out.println("1 - Sim");
-		System.out.println("2 - Não");
-		System.out.print(" Opção: ");
-		r = scan.nextInt();
+		r = 1;
+		do {
+			if (r != 1 && r != 2) {
+				Uteis.logo();
+				System.out.println("Opção inválida! Tente novamente.");
+			}
+			System.out.println("\nGostaria de mudar para a interface cliente? ");
+			System.out.println("1 - Sim");
+			System.out.println("2 - Não");
+			System.out.print(" Opção: ");
+			r = scan.nextInt();
+		} while (r != 1 && r != 2);
 
 		if (r == 1) {
 			menuCliente(listaPessoas, p, conta, listaConta);
@@ -525,11 +643,18 @@ public class Menus {
 		RelatorioDiretor.informacaoClientes(conta, p, listaPessoas, listaConta);
 
 		System.out.println();
-		System.out.println("\nGostaria de mudar para a interface cliente? ");
-		System.out.println("1 - Sim");
-		System.out.println("2 - Não");
-		System.out.print(" Opção: ");
-		r = scan.nextInt();
+		r = 1;
+		do {
+			if (r != 1 && r != 2) {
+				Uteis.logo();
+				System.out.println("Opção inválida! Tente novamente.");
+			}
+			System.out.println("\nGostaria de mudar para a interface cliente? ");
+			System.out.println("1 - Sim");
+			System.out.println("2 - Não");
+			System.out.print(" Opção: ");
+			r = scan.nextInt();
+		} while (r != 1 && r != 2);
 
 		if (r == 1) {
 			menuCliente(listaPessoas, p, conta, listaConta);
@@ -546,17 +671,24 @@ public class Menus {
 
 		Uteis.logo();
 		System.out.println("------------------------------------------------------------");
-		System.out.println("    Relatorio: Valor total do capital armazenado no Banco    ");
+		System.out.println("    Relatório: Valor total do capital armazenado no Banco    ");
 		System.out.println("------------------------------------------------------------");
-		System.out
-				.format("\nTotal de capital armazenado: R$ %.2f", RelatorioPresidente.totalDeCapital(conta, p, listaConta));
+		System.out.format("\nTotal de capital armazenado: R$ %.2f",
+				RelatorioPresidente.totalDeCapital(conta, p, listaConta));
 
 		System.out.println();
-		System.out.println("\n\nGostaria de mudar para a interface cliente? ");
-		System.out.println("1 - Sim");
-		System.out.println("2 - Não");
-		System.out.print(" Opção: ");
-		r = scan.nextInt();
+		r = 1;
+		do {
+			if (r != 1 && r != 2) {
+				Uteis.logo();
+				System.out.println("Opção inválida! Tente novamente.");
+			}
+			System.out.println("\nGostaria de mudar para a interface cliente? ");
+			System.out.println("1 - Sim");
+			System.out.println("2 - Não");
+			System.out.print(" Opção: ");
+			r = scan.nextInt();
+		} while (r != 1 && r != 2);
 
 		if (r == 1) {
 			menuCliente(listaPessoas, p, conta, listaConta);
